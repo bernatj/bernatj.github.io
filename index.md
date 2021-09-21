@@ -6,7 +6,7 @@ I am Bernat Jiménez Esteve, a postdoctoral researcher at ETH Zurich in Switzerl
 
 Bernat is a Postdoctoral Researcher in the Atmospheric Predictability group at ETH Zurich, led by Prof. Dr. Daniela Domeisen. His PhD research focused on the El Niño Southern Oscillation’s (ENSO) influence on extratropical climate. He uses observational and model data to understand the physical mechanisms that lead to such remote influences, which can improve predictability at seasonal timescales. In his Postdoc, he runs atmospheric model experiments to investigate the dynamical mechanisms of heat extremes and how those can influence their predicatbility
 
-## RECENT ACADEMIC PUBLICATIONS (in peer reviwed jounrals)
+## RECENT ACADEMIC PUBLICATIONS (in peer reviewed journals)
 
 Jiménez-Esteve, B., & Domeisen, D. I. V. (2020). Nonlinearity in the Tropospheric Pathway of ENSO to the North Atlantic. Weather and Climate Dynamics Discussions, 2020, 1–31. https://doi.org/10.5194/wcd-2019-18
 
