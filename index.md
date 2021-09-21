@@ -1,6 +1,6 @@
 ## Welcome to my personal website
 
-I am Bernat Jiménez Esteve, a postdoctoral reseracher at ETH Zurich in Switzerland.
+I am Bernat Jiménez Esteve, a postdoctoral researcher at ETH Zurich in Switzerland.
 
 ## ABOUT ME:
 
