@@ -12,7 +12,7 @@ to be added soon...
 
 # ACADEMIC PUBLICATIONS (in peer-reviewed journals):
 
-[Google scholar profile]([https://github.com/your-username](https://scholar.google.es/citations?view_op=list_works&hl=es&user=U0XZzqAAAAAJ)).
+[Google scholar profile]([https://github.com/your-username](https://scholar.google.es/citations?view_op=list_works&hl=es&user=U0XZzqAAAAAJ)
 
 ### Heatwave dynamics and modeling
 
