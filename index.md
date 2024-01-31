@@ -1,6 +1,6 @@
 ## Welcome to my personal website
 
-I am Bernat Jiménez Esteve, a postdoctoral researcher at ETH Zurich in Switzerland.
+I am Bernat Jiménez Esteve, a postdoctoral researcher at the Institue for Geociences (IGEO) CSIC-UCM in Madrid (Spain).
 
 ## ABOUT ME:
 
