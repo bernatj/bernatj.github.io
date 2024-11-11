@@ -1,14 +1,12 @@
 ## Welcome to my personal website
 
-I am Bernat Jiménez Esteve, a postdoctoral researcher at the Institue for Geociences (IGEO) CSIC-UCM in Madrid (Spain).
-
 ## ABOUT ME:
 
-I'm a postdoctoral researcher working on weather and climate extremes at the Instituto de Geociecias (UCM-CSIC) in the Physics of Climate and Global Change group.
+I am Bernat Jiménez Esteve, a postdoctoral researcher working on weather and climate extremes at the Instituto de Geociecias (UCM-CSIC) in the Physics of Climate and Global Change group.
 
 ## Curriculum Vitae
 
-2024 - Present: Postdoctoral Resarcher. Spanish Research Council (CSIC). Madrid
+2024 - Present: Postdoctoral Researcher. Spanish Research Council (CSIC). Madrid
 
 2022 – 2023: Recognised Researcher (R2). Barcelona Supercomputing Center (BSC). Spain
 
