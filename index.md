@@ -9,11 +9,17 @@ I'm a postdoctoral researcher working on weather and climate extremes at the Ins
 ## Curriculum Vitae
 
 2024 - Present: Postdoctoral Resarcher. Spanish Research Council (CSIC). Madrid
+
 2022 – 2023: Recognised Researcher (R2). Barcelona Supercomputing Center (BSC). Spain
+
 2021 – 2022:  Atmospheric modeller. Meteomatics AG. Switzerland
+
 2020 – 2021:  Postdoctoral Researcher. ETH Zürich . Switzerland
+
 2017 – 2019:  PhD student / Scientific Assistant. ETH Zürich. Switzerland
+
 2016 – 2017: PhD student / Scientific Assistant. GEOMAR - Helmholtz Center for Ocean Research Kiel. Germany
+
 
 ## Research Interests
 
