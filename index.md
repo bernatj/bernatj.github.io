@@ -4,11 +4,23 @@ I am Bernat Jiménez Esteve, a postdoctoral researcher at the Institue for Geoci
 
 ## ABOUT ME:
 
-to be added soon...
+I'm a postdoctoral researcher working on weather and climate extremes at the Instituto de Geociecias (UCM-CSIC) in the Physics of Climate and Global Change group.
 
 ## Curriculum Vitae
 
+2024 - Present: Postdoctoral Resarcher. Spanish Research Council (CSIC). Madrid
+2022 – 2023: Recognised Researcher (R2). Barcelona Supercomputing Center (BSC). Spain
+2021 – 2022:  Atmospheric modeller. Meteomatics AG. Switzerland
+2020 – 2021:  Postdoctoral Researcher. ETH Zürich . Switzerland
+2017 – 2019:  PhD student / Scientific Assistant. ETH Zürich. Switzerland
+2016 – 2017: PhD student / Scientific Assistant. GEOMAR - Helmholtz Center for Ocean Research Kiel. Germany
+
 ## Research Interests
+
+- My interests and expertise revolve around the field of climate dynamics and modelling, from weather to climate timescales.
+- I am interested in using physical models (Global Climate Models (GCMs) and Numerical Weather Prediction (NWP) models) as well as newly developed Machine Learning (ML) atmospheric models to understand the predictability and impact of climate change on atmospheric circulation and extremes.
+- I pay special interest on subseasonal-to-seasonal (S2S) timesecales (2 weeks to several months) as those show quite low predictability - know as predicatbility dessert.
+- I have also extensive experience in running idealized numerical models, which help us to isolate physical processes, for example related to teleconnections or weather extremes.
 
 # ACADEMIC PUBLICATIONS (in peer-reviewed journals):
 
