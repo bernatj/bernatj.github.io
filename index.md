@@ -30,8 +30,8 @@ I am Bernat Jiménez Esteve, a postdoctoral researcher working on weather and cl
   
 - I also have extensive experience running idealized numerical models, which help us isolate physical processes, such as those related to teleconnections or weather extremes.
 
-![aaa]([https://example.com/path/to/image.jpg](https://journals.ametsoc.org/view/journals/bams/101/6/bamsD190037.xml))
-*Figure 1: aaa.*
+![Subseasonal timescale](images/full-basmD190037-f1.jpg)
+*Figure 1: sources of predictability across weather and climate timesecales*
 
 # ACADEMIC PUBLICATIONS (in peer-reviewed journals):
 
