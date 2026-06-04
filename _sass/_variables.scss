@@ -1,0 +1,12 @@
+// Override al_folio_core theme color with blue
+:root {
+  --global-theme-color: #1565c0;
+  --global-hover-color: #1565c0;
+  --global-footer-link-color: #1565c0;
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #5c9fe8;
+  --global-hover-color: #5c9fe8;
+  --global-footer-link-color: #5c9fe8;
+}
