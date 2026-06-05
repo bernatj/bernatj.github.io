@@ -1,33 +1,6 @@
-# Co-author profiles — names are auto-linked in the publications list.
-
-"barriopedro":
-  - firstname: ["David", "D."]
-    url: https://scholar.google.com/citations?user=dVgvHokAAAAJ
-
-"garcia-herrera":
-  - firstname: ["Ricardo", "R."]
-    url: https://scholar.google.com/citations?user=zQKP3IQAAAAJ
-
-"domeisen":
-  - firstname: ["Daniela", "Daniela I. V.", "D.", "D. I. V."]
-    url: https://scholar.google.com/citations?user=qx8A1qIAAAAJ
-
-"kornhuber":
-  - firstname: ["Kai", "K."]
-    url: https://scholar.google.com/citations?user=XXXXXXXXXXX
-
-"de luca":
-  - firstname: ["Paolo", "P."]
-    url: https://scholar.google.com/citations?user=XXXXXXXXXXX
-
-"afargan-gerstman":
-  - firstname: ["Hilla", "H."]
-    url: https://scholar.google.com/citations?user=XXXXXXXXXXX
-
-"casselman":
-  - firstname: ["Jonathan W.", "Jonathan", "J. W.", "J."]
-    url: https://scholar.google.com/citations?user=XXXXXXXXXXX
-
-"weirich-benet":
-  - firstname: ["Erika", "E."]
-    url: https://scholar.google.com/citations?user=XXXXXXXXXXX
+# Co-author name matching for auto-linking in the publications list.
+# Add entries here to link a co-author's name to their profile page.
+# Example:
+# "lastname":
+#   - firstname: ["First", "F."]
+#     url: https://...
