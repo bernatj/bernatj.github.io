@@ -6,6 +6,10 @@ nav: true
 nav_order: 5
 ---
 
+**2026**
+
+- **[La nueva revolución de la predicción meteorológica](https://www.fundacionmuyinteresante.org/la-nueva-revolucion-de-la-prediccion-meteorologica.html)** — *Muy Interesante*, February 2026.
+
 **2025**
 
 - **[Un nuevo método basado en inteligencia artificial predice el papel del cambio climático en las olas de calor](https://delegacion.madrid.csic.es/un-nuevo-metodo-basado-en-inteligencia-artificial-predice-el-papel-del-cambio-climatico-en-las-olas-de-calor/)** — Press release · *CSIC Delegación de Madrid*, September 2025.
@@ -13,8 +17,6 @@ nav_order: 5
 - **[¿Hasta qué punto conocemos la relación entre el cambio climático y las olas de calor?](https://theconversation.com/hasta-que-punto-conocemos-la-relacion-entre-el-cambio-climatico-y-las-olas-de-calor-260726)** — Science article · *The Conversation*, July 2025. Authors: R. García-Herrera, B. Jiménez-Esteve, D. Barriopedro.
 
 - **[¿Está el Cambio Climático incrementando los fenómenos meteorológicos extremos?](https://www.igeo.ucm-csic.es/cultura-cientifica/geociencias-en-el-colegio/)** — Science article · *Geociencias en el Colegio (IGEO)*, June 2025.
-
-- **[La nueva revolución de la predicción meteorológica](https://www.fundacionmuyinteresante.org/la-nueva-revolucion-de-la-prediccion-meteorologica.html)** — *Muy Interesante*, 2025.
 
 - **[La inteligencia artificial permitirá estimar si las olas de calor son consecuencia del cambio climático](https://www.canalextremadura.es/eltiempo/metereologia/la-inteligencia-artificial-permitira-estimar-si-las-olas-de-calor-son)** — TV interview · *Canal Extremadura*, 2025.
 
