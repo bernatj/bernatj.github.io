@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: >
   <a href="https://igeo.ucm-csic.es/" target="_blank">Instituto de Geociencias (IGEO, CSIC-UCM)</a> · <a href="https://www.ucm.es/stream/" target="_blank">STREAM Group</a> · Madrid, Spain
