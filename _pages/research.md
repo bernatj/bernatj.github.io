@@ -26,7 +26,7 @@ One of the most intense extratropical cyclones to strike western Europe in decad
 
 ### Cyclone Claudia — November 2025
 
-A powerful extratropical cyclone that struck the Iberian Peninsula and northwest Africa in November 2025, bringing extreme precipitation and strong winds to the region.
+A powerful extratropical cyclone that struck the Iberian Peninsula and northwest Africa in November 2025, characterized by an intense **atmospheric river** that channelled vast amounts of moisture into the region, producing exceptional precipitation totals and strong winds.
 
 {% include video.liquid path="assets/video/cyclone_claudia_fcnv2_grib_factual_minus2_to_plus2days.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
 
