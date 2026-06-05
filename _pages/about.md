@@ -9,10 +9,7 @@ profile:
   align: right
   image: Foto_Bernat_Jimenez.png
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>C/ Doctor Severo Ochoa, 7</p>
-    <p>28040 Madrid, Spain</p>
-    <p>bernatji@ucm.es</p>
+  more_info:
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
