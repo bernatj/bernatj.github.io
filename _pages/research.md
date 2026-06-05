@@ -26,7 +26,19 @@ One of the most intense extratropical cyclones to strike western Europe in decad
 
 ### Cyclone Claudia — November 2025
 
+A powerful extratropical cyclone that struck the Iberian Peninsula and northwest Africa in November 2025, bringing extreme precipitation and strong winds to the region.
+
 {% include video.liquid path="assets/video/cyclone_claudia_fcnv2_grib_factual_minus2_to_plus2days.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
+
+---
+
+### Attribution of Precipitation Extremes
+
+The figure below (Fig. 10 from [Jiménez-Esteve et al. 2026](https://doi.org/10.1088/2752-5295/ae714b)) compares area-averaged precipitation forecasts from the AIFS model under **factual** (red, current climate) and **counterfactual** (blue, pre-industrial climate) conditions for both storms.
+
+For **Storm Ciarán**, the factual forecast yields ~9% more precipitation than the counterfactual (30.7 vs 28.0 mm), with a highly significant difference (p = 2.9×10⁻⁵). For **Cyclone Claudia**, the factual forecast is ~6% wetter (32.2 vs 30.3 mm; p = 0.042). These results indicate that anthropogenic climate change substantially enhanced the precipitation associated with both storms, consistent with the thermodynamic argument that a warmer atmosphere holds more moisture.
+
+{% include figure.liquid path="assets/img/fig10_precipitation_attribution.png" class="img-fluid rounded z-depth-1" zoomable=true caption="Fig. 10 — Attribution of precipitation for Storm Ciarán (top) and Cyclone Claudia (bottom). Left: spatial map of precipitation difference (factual minus counterfactual). Centre: area-averaged precipitation as a function of forecast lead time. Right: distributions of factual vs counterfactual precipitation across ensemble members." %}
 
 ---
 
