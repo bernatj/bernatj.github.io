@@ -24,12 +24,12 @@ nav_order: 5
 
 ## Media
 
-- **[Weather forecasts could warn about events made worse by climate change](https://www.newscientist.com/)** — *New Scientist*, September 2024. Written by Madeleine Cruff.
+- **[Weather forecasts could warn about events made worse by climate change](https://www.newscientist.com/article/2447643-weather-forecasts-could-warn-about-events-made-worse-by-climate-change/)** — *New Scientist*, September 2024. Written by Madeleine Cruff.
 
-- **[Can extreme weather events be anticipated?](https://www.mapfre.com/en/insights/climate-change/)** — *MAPFRE Global Risks*, June 2024.
+- **[Can extreme weather events be anticipated?](https://www.mapfreglobalrisks.com/en/risks-insurance-management/article/can-extreme-weather-events-anticipated/)** — *MAPFRE Global Risks*, June 2024.
 
 - **[La inteligencia artificial permitirá estimar si las olas de calor son consecuencia del cambio climático](https://www.canalextremadura.es/eltiempo/metereologia/la-inteligencia-artificial-permitira-estimar-si-las-olas-de-calor-son)** — *Canal Extremadura*, 2025.
 
 - **[¿Eres de los que cree que siempre ha hecho el mismo calor?](https://radiopopular.com/podcast/eres-de-los-que-cree-que-siempre-ha-hecho-el-mismo-calor)** — Radio interview · *Radio Popular (Bilbao)*, 2025.
 
-- **[Olas de calor y cambio climático](https://www.bsc.es/)** — Video interview · Barcelona Supercomputing Center (BSC), August 2023.
+- **[Olas de calor y cambio climático](https://www.linkedin.com/posts/barcelona-supercomputing-center_bsc-variabilidad-y-cambio-clim%C3%A1tico-activity-7098222021548871680-aoNR/)** — Video interview · Barcelona Supercomputing Center (BSC), August 2023.
