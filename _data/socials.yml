@@ -6,6 +6,8 @@ email: bernatji@ucm.es # your email address
 scholar_userid: U0XZzqAAAAAJ # your Google Scholar ID
 orcid_id: 0000-0003-2706-5309
 github_username: bernatj
+linkedin_username: bernat-jiménez-esteve-148437a3
+bluesky: bernat-jimenez.bsky.social
 # wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 # whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 #custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin
