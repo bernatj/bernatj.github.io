@@ -40,7 +40,6 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <!-- DATE_BUTTONS_START -->
   <!-- LATEST_INIT:2025111518 -->
   <button class="fc-date-btn active" onclick="selectDate('2025111518')">2025-11-15 18Z &#9733;</button>
-  <button class="fc-date-btn" onclick="selectDate('2026060812')">2026-06-08 12Z</button>
   <!-- DATE_BUTTONS_END -->
 </div>
 
