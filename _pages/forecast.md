@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /forecast/
-title: Live Forecast
+title: AI-forecast-based Attribution
 nav: true
 nav_order: 7
 ---
