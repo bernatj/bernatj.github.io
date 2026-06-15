@@ -105,6 +105,20 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   </div>
 </div>
 
+<hr>
+
+<h3>Mean Sea Level Pressure &mdash; Attribution Signal</h3>
+<div class="fc-pair">
+  <div class="forecast-fig" data-key="msl_acc_signal">
+    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_msl_acc_signal.png" alt="MSL ACC signal global" onclick="zoomImg(this)">
+  </div>
+  <div class="forecast-fig" data-key="msl_acc_signal_europe">
+    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_msl_acc_signal_europe.png" alt="MSL ACC signal Europe" onclick="zoomImg(this)">
+  </div>
+</div>
+
 <script>
 var latestInit   = '2025111518';
 var currentModel = 'pangu';
