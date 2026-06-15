@@ -6,47 +6,53 @@ nav: true
 nav_order: 7
 ---
 
-This page shows the latest **AI-based weather forecast** and **attribution signal** generated with [FourCastNetv2](https://arxiv.org/abs/2202.11214), updated daily. Forecasts are initialised from ERA5 reanalysis and run under both **factual** (current climate) and **counterfactual** (pre-industrial) conditions. The attribution signal — the difference between the two — quantifies how much anthropogenic climate change is affecting current conditions.
+Daily **6-day AI weather forecasts** (Pangu-Weather) initialised from ERA5 reanalysis,
+run under both **factual** (current climate) and **counterfactual** (pre-industrial, PGW) conditions.
+The **ACC signal** (Factual − PGW) quantifies how much anthropogenic climate change affects the current forecast,
+averaged over the 2–5 day lead window (leads 48, 72, 96, 120 h).
+Stippled dots mark grid points **not significant** at p < 0.05 (paired t-test across the four leads).
+Z500 contours from the factual forecast are overlaid on ACC signal maps.
+
+See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Esteve et al. (2025)</a> for the full methodology.
 
 ---
 
-### Latest Forecast
-{: .mt-3}
+### 2 m Temperature (T2M)
+{: .mt-4}
 
-*Forecast initialisation date: <span id="forecast-date">–</span>*
+#### Factual forecast — 2–5 day mean
+{% include figure.liquid path="assets/img/forecast/latest_pangu_t2m_factual.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T2M factual forecast" %}
 
----
-
-#### 2-metre Temperature — Attribution Signal (Factual − Counterfactual)
-
-<div class="row mt-3">
-  <div class="col-12 col-md-6">
-    <p class="text-center text-muted small">Day +3</p>
-    {% include figure.liquid path="assets/img/forecast/t2m_attribution_day3.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T2m attribution signal day +3" %}
-  </div>
-  <div class="col-12 col-md-6">
-    <p class="text-center text-muted small">Day +5</p>
-    {% include figure.liquid path="assets/img/forecast/t2m_attribution_day5.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T2m attribution signal day +5" %}
-  </div>
-</div>
+#### ACC signal (Factual − PGW)
+{% include figure.liquid path="assets/img/forecast/latest_pangu_t2m_acc_signal.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T2M ACC signal" %}
 
 ---
 
-#### 500 hPa Geopotential Height — Factual Forecast
+### 850 hPa Temperature (T850)
+{: .mt-4}
 
-<div class="row mt-3">
-  <div class="col-12 col-md-6">
-    <p class="text-center text-muted small">Day +3</p>
-    {% include figure.liquid path="assets/img/forecast/z500_factual_day3.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Z500 factual forecast day +3" %}
-  </div>
-  <div class="col-12 col-md-6">
-    <p class="text-center text-muted small">Day +5</p>
-    {% include figure.liquid path="assets/img/forecast/z500_factual_day5.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Z500 factual forecast day +5" %}
-  </div>
-</div>
+#### Factual forecast — 2–5 day mean
+{% include figure.liquid path="assets/img/forecast/latest_pangu_t850_factual.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T850 factual forecast" %}
+
+#### ACC signal (Factual − PGW)
+{% include figure.liquid path="assets/img/forecast/latest_pangu_t850_acc_signal.png" class="img-fluid rounded z-depth-1" zoomable=true alt="T850 ACC signal" %}
 
 ---
 
-<p class="text-muted small">
-Forecasts are generated with FourCastNetv2 initialised from ERA5 reanalysis. Counterfactual conditions are obtained by subtracting the CMIP6 multi-model mean anthropogenic signal from the ERA5 initial state (pseudo-global-warming approach). See <a href="https://doi.org/10.1029/2025EF006453">Jiménez-Esteve et al. (2025)</a> for the full methodology.
+### 500 hPa Geopotential Height (Z500)
+{: .mt-4}
+
+#### Factual forecast — 2–5 day mean
+{% include figure.liquid path="assets/img/forecast/latest_pangu_z500_factual.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Z500 factual forecast" %}
+
+#### ACC signal (Factual − PGW)
+{% include figure.liquid path="assets/img/forecast/latest_pangu_z500_acc_signal.png" class="img-fluid rounded z-depth-1" zoomable=true alt="Z500 ACC signal" %}
+
+---
+
+<p class="text-muted small mt-4">
+<em>Last updated: 2025-11-15 18:00 UTC</em> &nbsp;·&nbsp;
+Forecasts generated with <a href="https://github.com/198808xc/Pangu-Weather" target="_blank">Pangu-Weather</a>.
+Counterfactual conditions use the CMIP6 multi-model mean warming delta subtracted from the ERA5 initial state
+(pseudo-global-warming approach).
 </p>
