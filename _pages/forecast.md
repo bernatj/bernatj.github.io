@@ -17,14 +17,33 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 ---
 
 <style>
+/* Widen content for this page */
+.post-content, .page-content { max-width: 1400px !important; }
+
 .fc-btn       { padding:8px 22px; border:none; border-radius:6px; cursor:pointer; font-size:14px; background:#e9ecef; color:#444; transition:.15s; }
 .fc-btn.active      { background:#1a73e8; color:#fff; font-weight:600; }
 .fc-date-btn  { padding:5px 14px; border:none; border-radius:5px; cursor:pointer; font-size:12px; background:#e9ecef; color:#444; transition:.15s; }
 .fc-date-btn.active { background:#0f9d58; color:#fff; font-weight:600; }
-.forecast-img { max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:block; }
+.forecast-img { max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:block; cursor:zoom-in; }
 .fc-pair      { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; margin:8px 0 24px; }
 .fc-pair > div { flex:1; min-width:280px; }
+
+/* Lightbox */
+#fc-lightbox {
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,.88); z-index:9999; cursor:zoom-out;
+}
+#fc-lightbox img {
+  max-width:95%; max-height:95%; position:absolute;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  border-radius:6px; box-shadow:0 4px 30px rgba(0,0,0,.5);
+}
 </style>
+
+<!-- Lightbox overlay -->
+<div id="fc-lightbox" onclick="this.style.display='none'">
+  <img id="fc-lightbox-img" src="" alt="">
+</div>
 
 <!-- Model selector -->
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 10px;align-items:center;">
@@ -43,16 +62,33 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <!-- DATE_BUTTONS_END -->
 </div>
 
-<h3 style="margin-top:4px;">850 hPa Temperature &mdash; Attribution Signal</h3>
+<h3 style="margin-top:4px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
-  <div class="forecast-fig" data-key="t850_acc_signal">
+  <div class="forecast-fig" data-key="t2m_acc_signal">
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t850_acc_signal.png" alt="T850 ACC signal global">
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t2m_acc_signal.png" alt="T2m ACC signal global" onclick="zoomImg(this)">
   </div>
-  <div class="forecast-fig" data-key="t850_acc_signal_europe">
+  <div class="forecast-fig" data-key="t2m_acc_signal_europe">
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t850_acc_signal_europe.png" alt="T850 ACC signal Europe">
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t2m_acc_signal_europe.png" alt="T2m ACC signal Europe" onclick="zoomImg(this)">
   </div>
+</div>
+
+<hr>
+
+<h3>850 hPa Specific Humidity &mdash; Attribution Signal <small style="font-size:13px;color:#888;">(Pangu only)</small></h3>
+<div id="q850-section" class="fc-pair">
+  <div class="forecast-fig" data-key="q850_acc_signal">
+    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_q850_acc_signal.png" alt="Q850 ACC signal global" onclick="zoomImg(this)">
+  </div>
+  <div class="forecast-fig" data-key="q850_acc_signal_europe">
+    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_q850_acc_signal_europe.png" alt="Q850 ACC signal Europe" onclick="zoomImg(this)">
+  </div>
+</div>
+<div id="q850-unavail" style="display:none;color:#888;font-style:italic;margin-bottom:24px;">
+  Q850 not available for this model.
 </div>
 
 <hr>
@@ -61,11 +97,11 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <div class="fc-pair">
   <div class="forecast-fig" data-key="z500_acc_signal">
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal.png" alt="Z500 ACC signal global">
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal.png" alt="Z500 ACC signal global" onclick="zoomImg(this)">
   </div>
   <div class="forecast-fig" data-key="z500_acc_signal_europe">
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal_europe.png" alt="Z500 ACC signal Europe">
+    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal_europe.png" alt="Z500 ACC signal Europe" onclick="zoomImg(this)">
   </div>
 </div>
 
@@ -73,12 +109,21 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 var latestInit   = '2025111518';
 var currentModel = 'pangu';
 var currentDate  = '2025111518';
+var Q850_MODELS  = ['pangu'];
+
+function zoomImg(img) {
+  document.getElementById('fc-lightbox-img').src = img.src;
+  document.getElementById('fc-lightbox').style.display = 'block';
+}
 
 function selectModel(m) {
   currentModel = m;
   document.querySelectorAll('.fc-btn').forEach(function(b) {
     b.classList.toggle('active', b.id === 'btn-' + m);
   });
+  var hasQ850 = Q850_MODELS.indexOf(m) !== -1;
+  document.getElementById('q850-section').style.display  = hasQ850 ? '' : 'none';
+  document.getElementById('q850-unavail').style.display  = hasQ850 ? 'none' : '';
   updateImages();
 }
 
