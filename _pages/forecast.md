@@ -57,8 +57,9 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;align-items:center;">
   <span style="font-size:13px;font-weight:600;color:#555;min-width:52px;">Date:</span>
   <!-- DATE_BUTTONS_START -->
-  <!-- LATEST_INIT:2026062818 -->
-  <button class="fc-date-btn active" onclick="selectDate('2026063018')">2026-06-30 18Z &#9733;</button>
+  <!-- LATEST_INIT:2026062900 -->
+  <button class="fc-date-btn active" onclick="selectDate('2026070100')">2026-07-01 00Z &#9733;</button>
+  <button class="fc-date-btn" onclick="selectDate('2026063018')">2026-06-30 18Z</button>
   <button class="fc-date-btn" onclick="selectDate('2026063012')">2026-06-30 12Z</button>
   <button class="fc-date-btn" onclick="selectDate('2026063006')">2026-06-30 06Z</button>
   <button class="fc-date-btn" onclick="selectDate('2026063000')">2026-06-30 00Z</button>
@@ -67,7 +68,6 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button class="fc-date-btn" onclick="selectDate('2026062906')">2026-06-29 06Z</button>
   <button class="fc-date-btn" onclick="selectDate('2026062900')">2026-06-29 00Z</button>
   <button class="fc-date-btn" onclick="selectDate('2026062818')">2026-06-28 18Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026062812')">2026-06-28 12Z</button>
   <!-- DATE_BUTTONS_END -->
 </div>
 
@@ -129,9 +129,9 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 </div>
 
 <script>
-var latestInit   = '2026063018';
+var latestInit   = '2026070100';
 var currentModel = 'pangu';
-var currentDate  = '2026063018';
+var currentDate  = '2026070100';
 var Q850_MODELS  = ['pangu'];
 
 function zoomImg(img) {
@@ -179,7 +179,7 @@ function updateImages() {
 ---
 
 <p class="text-muted small mt-4">
-<em>Last updated: 2026-06-28 18:00 UTC</em> &nbsp;&middot;&nbsp;
+<em>Last updated: 2026-06-29 00:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions use the CMIP6 multi-model mean warming delta subtracted from ERA5
 (pseudo-global-warming approach).
 </p>
