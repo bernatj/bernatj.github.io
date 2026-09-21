@@ -22,11 +22,26 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 
 .fc-btn       { padding:8px 22px; border:none; border-radius:6px; cursor:pointer; font-size:14px; background:#e9ecef; color:#444; transition:.15s; }
 .fc-btn.active      { background:#1a73e8; color:#fff; font-weight:600; }
-.fc-date-btn  { padding:5px 14px; border:none; border-radius:5px; cursor:pointer; font-size:12px; background:#e9ecef; color:#444; transition:.15s; }
-.fc-date-btn.active { background:#0f9d58; color:#fff; font-weight:600; }
+.fc-btn[disabled]   { opacity:.4; cursor:not-allowed; }
+.fc-var-btn   { padding:7px 18px; border:none; border-radius:6px; cursor:pointer; font-size:14px; background:#e9ecef; color:#444; transition:.15s; }
+.fc-var-btn.active  { background:#0f9d58; color:#fff; font-weight:600; }
+.fc-var-btn[disabled] { opacity:.4; cursor:not-allowed; }
+.fc-row       { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; align-items:center; }
+.fc-row > .fc-label { font-size:13px; font-weight:600; color:#555; min-width:64px; }
 .forecast-img { max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:block; cursor:zoom-in; }
-.fc-pair      { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; margin:8px 0 24px; }
+.fc-pair      { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; margin:8px 0 12px; }
 .fc-pair > div { flex:1; min-width:280px; }
+
+/* Time slider */
+.fc-slider-box { margin:6px 0 28px; padding:12px 16px 8px; border-radius:8px; background:#f4f6f8; }
+.fc-slider-top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:6px; }
+.fc-step-btn  { width:34px; height:30px; border:none; border-radius:5px; cursor:pointer; font-size:14px; background:#dfe3e7; color:#333; }
+.fc-step-btn:hover { background:#cfd5db; }
+#fc-date-label { font-size:14px; font-weight:600; color:#333; }
+#fc-init-label { font-size:12px; color:#777; }
+#fc-slider    { width:100%; accent-color:#0f9d58; cursor:pointer; margin:4px 0 0; }
+#fc-ticks     { position:relative; height:26px; font-size:11px; color:#777; margin:0 8px; }
+#fc-ticks span { position:absolute; transform:translateX(-50%); white-space:nowrap; text-align:center; line-height:1.15; }
 
 /* Lightbox */
 #fc-lightbox {
@@ -46,134 +61,159 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 </div>
 
 <!-- Model selector -->
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 10px;align-items:center;">
-  <span style="font-size:13px;font-weight:600;color:#555;min-width:52px;">Model:</span>
+<div class="fc-row">
+  <span class="fc-label">Model:</span>
   <button id="btn-pangu" class="fc-btn active" onclick="selectModel('pangu')">Pangu-Weather</button>
   <button id="btn-fcnv2" class="fc-btn"        onclick="selectModel('fcnv2')">FourCastNet v2</button>
   <button id="btn-multi" class="fc-btn"        onclick="selectModel('multi')">Multi-model mean</button>
 </div>
 
-<!-- Date selector -->
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;align-items:center;">
-  <span style="font-size:13px;font-weight:600;color:#555;min-width:52px;">Date:</span>
-  <!-- DATE_BUTTONS_START -->
-  <!-- LATEST_INIT:2026091400 -->
-  <button class="fc-date-btn active" onclick="selectDate('2026091600')">2026-09-16 00Z &#9733;</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091518')">2026-09-15 18Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091512')">2026-09-15 12Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091506')">2026-09-15 06Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091500')">2026-09-15 00Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091418')">2026-09-14 18Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091412')">2026-09-14 12Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091406')">2026-09-14 06Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091400')">2026-09-14 00Z</button>
-  <button class="fc-date-btn" onclick="selectDate('2026091318')">2026-09-13 18Z</button>
-  <!-- DATE_BUTTONS_END -->
+<!-- Variable selector -->
+<div class="fc-row">
+  <span class="fc-label">Variable:</span>
+  <button id="var-t2m"  class="fc-var-btn active" onclick="selectVar('t2m')">T2m</button>
+  <button id="var-t850" class="fc-var-btn"        onclick="selectVar('t850')">T850</button>
+  <button id="var-q850" class="fc-var-btn"        onclick="selectVar('q850')" title="Available for Pangu-Weather only">Q850</button>
+  <button id="var-z500" class="fc-var-btn"        onclick="selectVar('z500')">Z500</button>
+  <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
 </div>
 
-<h3 style="margin-top:4px;">2 m Temperature &mdash; Attribution Signal</h3>
+<h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
-  <div class="forecast-fig" data-key="t2m_acc_signal">
+  <div>
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t2m_acc_signal.png" alt="T2m ACC signal global" onclick="zoomImg(this)">
+    <img id="fc-img-global" class="forecast-img" src="" alt="ACC signal global" onclick="zoomImg(this)">
   </div>
-  <div class="forecast-fig" data-key="t2m_acc_signal_europe">
+  <div>
     <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_t2m_acc_signal_europe.png" alt="T2m ACC signal Europe" onclick="zoomImg(this)">
+    <img id="fc-img-europe" class="forecast-img" src="" alt="ACC signal Europe" onclick="zoomImg(this)">
   </div>
 </div>
 
-<hr>
-
-<h3>850 hPa Specific Humidity &mdash; Attribution Signal <small style="font-size:13px;color:#888;">(Pangu only)</small></h3>
-<div id="q850-section" class="fc-pair">
-  <div class="forecast-fig" data-key="q850_acc_signal">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_q850_acc_signal.png" alt="Q850 ACC signal global" onclick="zoomImg(this)">
+<!-- Time slider -->
+<div class="fc-slider-box">
+  <div class="fc-slider-top">
+    <button class="fc-step-btn" onclick="stepDate(-1)" title="Previous (left arrow)">&#9664;</button>
+    <button class="fc-step-btn" id="fc-play" style="width:64px;" onclick="togglePlay()" title="Play / pause">Play</button>
+    <button class="fc-step-btn" onclick="stepDate(1)" title="Next (right arrow)">&#9654;</button>
+    <span id="fc-date-label"></span>
+    <span id="fc-init-label"></span>
   </div>
-  <div class="forecast-fig" data-key="q850_acc_signal_europe">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_q850_acc_signal_europe.png" alt="Q850 ACC signal Europe" onclick="zoomImg(this)">
-  </div>
-</div>
-<div id="q850-unavail" style="display:none;color:#888;font-style:italic;margin-bottom:24px;">
-  Q850 not available for this model.
-</div>
-
-<hr>
-
-<h3>500 hPa Geopotential Height &mdash; Attribution Signal</h3>
-<div class="fc-pair">
-  <div class="forecast-fig" data-key="z500_acc_signal">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal.png" alt="Z500 ACC signal global" onclick="zoomImg(this)">
-  </div>
-  <div class="forecast-fig" data-key="z500_acc_signal_europe">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_z500_acc_signal_europe.png" alt="Z500 ACC signal Europe" onclick="zoomImg(this)">
-  </div>
-</div>
-
-<hr>
-
-<h3>Mean Sea Level Pressure &mdash; Attribution Signal</h3>
-<div class="fc-pair">
-  <div class="forecast-fig" data-key="msl_acc_signal">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_msl_acc_signal.png" alt="MSL ACC signal global" onclick="zoomImg(this)">
-  </div>
-  <div class="forecast-fig" data-key="msl_acc_signal_europe">
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img class="forecast-img" src="/assets/img/forecast/latest_pangu_msl_acc_signal_europe.png" alt="MSL ACC signal Europe" onclick="zoomImg(this)">
-  </div>
+  <input type="range" id="fc-slider" min="0" max="0" step="1" value="0" aria-label="Forecast verification date">
+  <div id="fc-ticks"></div>
 </div>
 
 <script>
-var latestInit   = '2026091600';
+// DATES_START (rewritten daily by update_website.py; oldest first, keys are verification times YYYYMMDDHH)
+var fcDates = ['2026091106', '2026091112', '2026091118', '2026091200', '2026091206', '2026091212', '2026091218', '2026091300', '2026091306', '2026091312', '2026091318', '2026091400', '2026091406', '2026091412', '2026091418', '2026091500', '2026091506', '2026091512', '2026091518', '2026091600'];
+// DATES_END
+
 var currentModel = 'pangu';
-var currentDate  = '2026091600';
-var Q850_MODELS  = ['pangu'];
+var currentVar   = 't2m';
+var currentIdx   = fcDates.length - 1;
+var playTimer    = null;
+
+var VAR_TITLES = {
+  t2m:  '2 m Temperature',
+  t850: '850 hPa Temperature',
+  q850: '850 hPa Specific Humidity <small style="font-size:13px;color:#888;">(Pangu only)</small>',
+  z500: '500 hPa Geopotential Height',
+  msl:  'Mean Sea Level Pressure'
+};
+var Q850_MODELS = ['pangu'];
+
+function fmt(key) {
+  return key.slice(0,4) + '-' + key.slice(4,6) + '-' + key.slice(6,8) + ' ' + key.slice(8,10) + ' UTC';
+}
+function initOf(key) {
+  var d = new Date(Date.UTC(+key.slice(0,4), +key.slice(4,6)-1, +key.slice(6,8), +key.slice(8,10)) - 48*3600*1000);
+  var p = function(n) { return (n < 10 ? '0' : '') + n; };
+  return d.getUTCFullYear() + '-' + p(d.getUTCMonth()+1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + 'Z';
+}
+function imgSrc(model, v, kind, key) {
+  return '/assets/img/forecast/archive/' + key + '/' + model + '_' + v + '_acc_signal' + kind + '_' + key + '.png';
+}
 
 function zoomImg(img) {
   document.getElementById('fc-lightbox-img').src = img.src;
   document.getElementById('fc-lightbox').style.display = 'block';
 }
 
+function updateImages() {
+  var key = fcDates[currentIdx];
+  document.getElementById('fc-img-global').src = imgSrc(currentModel, currentVar, '', key);
+  document.getElementById('fc-img-europe').src = imgSrc(currentModel, currentVar, '_europe', key);
+  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; Attribution Signal';
+  document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + (currentIdx === fcDates.length-1 ? '  ★ latest' : '');
+  document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
+  document.getElementById('fc-slider').value = currentIdx;
+}
+
+// Preload every date for the current model/variable so scrubbing is instant.
+function preloadAll() {
+  fcDates.forEach(function(k) {
+    (new Image()).src = imgSrc(currentModel, currentVar, '', k);
+    (new Image()).src = imgSrc(currentModel, currentVar, '_europe', k);
+  });
+}
+
 function selectModel(m) {
   currentModel = m;
-  document.querySelectorAll('.fc-btn').forEach(function(b) {
-    b.classList.toggle('active', b.id === 'btn-' + m);
-  });
-  var hasQ850 = Q850_MODELS.indexOf(m) !== -1;
-  document.getElementById('q850-section').style.display  = hasQ850 ? '' : 'none';
-  document.getElementById('q850-unavail').style.display  = hasQ850 ? 'none' : '';
-  updateImages();
+  document.querySelectorAll('.fc-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
+  var hasQ = Q850_MODELS.indexOf(m) !== -1;
+  document.getElementById('var-q850').disabled = !hasQ;
+  if (!hasQ && currentVar === 'q850') { selectVar('t2m'); return; }
+  updateImages(); preloadAll();
 }
 
-function selectDate(dateKey) {
-  currentDate = dateKey;
-  document.querySelectorAll('.fc-date-btn').forEach(function(b) {
-    var onclick = b.getAttribute('onclick') || '';
-    b.classList.toggle('active', onclick.indexOf("'" + dateKey + "'") !== -1);
-  });
-  updateImages();
+function selectVar(v) {
+  currentVar = v;
+  document.querySelectorAll('.fc-var-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'var-' + v); });
+  updateImages(); preloadAll();
 }
 
-function updateImages() {
-  document.querySelectorAll('.forecast-fig').forEach(function(div) {
-    var key = div.getAttribute('data-key');
-    var img = div.querySelector('img');
-    if (!img) return;
-    var src;
-    if (currentDate === latestInit) {
-      src = '/assets/img/forecast/latest_' + currentModel + '_' + key + '.png';
-    } else {
-      src = '/assets/img/forecast/archive/' + currentDate + '/' +
-            currentModel + '_' + key + '_' + currentDate + '.png';
-    }
-    img.setAttribute('src', src);
+function setIdx(i) {
+  currentIdx = Math.max(0, Math.min(fcDates.length - 1, i));
+  updateImages();
+}
+function stepDate(d) { setIdx(currentIdx + d); }
+
+function togglePlay() {
+  var btn = document.getElementById('fc-play');
+  if (playTimer) { clearInterval(playTimer); playTimer = null; btn.textContent = 'Play'; return; }
+  btn.textContent = 'Pause';
+  if (currentIdx >= fcDates.length - 1) setIdx(0);
+  playTimer = setInterval(function() {
+    if (currentIdx >= fcDates.length - 1) { togglePlay(); return; }
+    stepDate(1);
+  }, 700);
+}
+
+function buildTicks() {
+  var box = document.getElementById('fc-ticks');
+  box.innerHTML = '';
+  var n = fcDates.length;
+  var mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  fcDates.forEach(function(k, i) {
+    if (k.slice(8,10) !== '00' && i !== 0 && i !== n-1) return;      // label each day at 00 UTC, plus both ends
+    var lbl = (+k.slice(6,8)) + ' ' + mo[+k.slice(4,6)-1] + (k.slice(8,10) !== '00' ? ' ' + k.slice(8,10) + 'Z' : '');
+    var s = document.createElement('span');
+    s.style.left = (n > 1 ? 100 * i / (n-1) : 0) + '%';
+    s.textContent = lbl;
+    box.appendChild(s);
   });
 }
+
+document.getElementById('fc-slider').max = fcDates.length - 1;
+document.getElementById('fc-slider').addEventListener('input', function() { setIdx(+this.value); });
+document.addEventListener('keydown', function(e) {
+  if (e.target && (e.target.tagName === 'INPUT' && e.target.type !== 'range')) return;
+  if (e.key === 'ArrowLeft')  { stepDate(-1); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { stepDate(1);  e.preventDefault(); }
+});
+buildTicks();
+updateImages();
+preloadAll();
 </script>
 
 ---
