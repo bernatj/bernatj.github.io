@@ -105,7 +105,7 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 
 <script>
 // DATES_START (rewritten daily by update_website.py; oldest first, keys are verification times YYYYMMDDHH)
-var fcDates = ['2026091118', '2026091200', '2026091206', '2026091212', '2026091218', '2026091300', '2026091306', '2026091312', '2026091318', '2026091400', '2026091406', '2026091412', '2026091418', '2026091500', '2026091506', '2026091512', '2026091518', '2026091600', '2026091606', '2026091612'];
+var fcDates = ['2026091200', '2026091206', '2026091212', '2026091218', '2026091300', '2026091306', '2026091312', '2026091318', '2026091400', '2026091406', '2026091412', '2026091418', '2026091500', '2026091506', '2026091512', '2026091518', '2026091600', '2026091606', '2026091612', '2026091618'];
 // DATES_END
 
 var currentModel = 'pangu';
@@ -219,7 +219,7 @@ preloadAll();
 ---
 
 <p class="text-muted small mt-4">
-<em>Last updated: 2026-09-14 12:00 UTC</em> &nbsp;&middot;&nbsp;
+<em>Last updated: 2026-09-14 18:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions use the CMIP6 multi-model mean warming delta subtracted from ERA5
 (pseudo-global-warming approach).
 </p>
