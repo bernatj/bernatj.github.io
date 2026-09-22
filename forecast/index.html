@@ -1,0 +1,332 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> AI-forecast-based Attribution | Bernat Jiménez Esteve </title> <meta name="author" content="Bernat Jiménez Esteve"> <meta name="description" content="Personal academic website of Bernat Jiménez Esteve, postdoctoral researcher in atmospheric dynamics at IGEO (CSIC-UCM), Madrid. "> <meta name="keywords" content="atmospheric dynamics, heatwaves, climate extremes, teleconnections, sub-seasonal prediction, climate variability, machine learning"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://bernatj.github.io/forecast/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Bernat</span> Jiménez Esteve </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/bio/">bio </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Research </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/research/cyclones/">Extratropical Cyclones</a> <a class="dropdown-item " href="/research/heatwaves/">Heatwaves</a> </div> </li> <li class="nav-item "> <a class="nav-link" href="/outreach/">Outreach </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item active"> <a class="nav-link" href="/forecast/">AI-forecast-based Attribution <span class="sr-only">(current)</span> </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">AI-forecast-based Attribution</h1> <p class="post-description"></p> </header> <article> <p>Daily <strong>6-day AI weather forecasts</strong> initialised from ERA5 reanalysis, run under both <strong>factual</strong> (current climate) and <strong>counterfactual</strong> (pre-industrial, PGW) conditions. The <strong>ACC signal</strong> = Factual − PGW, averaged over 13 initializations all verifying at the same target date (lead times 2–5 days). Stippled dots mark grid points <strong>not significant</strong> at p &lt; 0.05 (paired t-test across initializations). Z500 factual contours are overlaid.</p> <p>See <a href="https://doi.org/10.1029/2025EF006453" target="_blank" rel="external nofollow noopener">Jiménez-Esteve et al. (2025)</a> for methodology.</p> <hr> <style>
+/* Widen content for this page */
+.post-content, .page-content { max-width: 1400px !important; }
+
+.fc-btn       { padding:8px 22px; border:none; border-radius:6px; cursor:pointer; font-size:14px; background:#e9ecef; color:#444; transition:.15s; }
+.fc-btn.active      { background:#1a73e8; color:#fff; font-weight:600; }
+.fc-btn[disabled]   { opacity:.4; cursor:not-allowed; }
+.fc-var-btn   { padding:7px 18px; border:none; border-radius:6px; cursor:pointer; font-size:14px; background:#e9ecef; color:#444; transition:.15s; }
+.fc-var-btn.active  { background:#0f9d58; color:#fff; font-weight:600; }
+.fc-var-btn[disabled] { opacity:.4; cursor:not-allowed; }
+.fc-row       { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; align-items:center; }
+.fc-row > .fc-label { font-size:13px; font-weight:600; color:#555; min-width:64px; }
+.forecast-img { max-width:100%; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:block; cursor:zoom-in; }
+.fc-pair      { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; margin:8px 0 12px; }
+.fc-pair > div { flex:1; min-width:280px; }
+
+/* Time slider */
+.fc-slider-box { margin:6px 0 28px; padding:12px 16px 8px; border-radius:8px; background:#f4f6f8; }
+.fc-slider-top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:6px; }
+.fc-step-btn  { width:34px; height:30px; border:none; border-radius:5px; cursor:pointer; font-size:14px; background:#dfe3e7; color:#333; }
+.fc-step-btn:hover { background:#cfd5db; }
+#fc-date-label { font-size:14px; font-weight:600; color:#333; }
+#fc-init-label { font-size:12px; color:#777; }
+#fc-slider    { width:100%; accent-color:#0f9d58; cursor:pointer; margin:4px 0 0; }
+#fc-ticks     { position:relative; height:26px; font-size:11px; color:#777; margin:0 8px; }
+#fc-ticks span { position:absolute; transform:translateX(-50%); white-space:nowrap; text-align:center; line-height:1.15; }
+
+/* Lightbox */
+#fc-lightbox {
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,.88); z-index:9999; cursor:zoom-out;
+}
+#fc-lightbox img {
+  max-width:95%; max-height:95%; position:absolute;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  border-radius:6px; box-shadow:0 4px 30px rgba(0,0,0,.5);
+}
+</style> <div id="fc-lightbox" onclick="this.style.display='none'"> <img id="fc-lightbox-img" src="" alt=""> </div> <div class="fc-row"> <span class="fc-label">Model:</span> <button id="btn-pangu" class="fc-btn active" onclick="selectModel('pangu')">Pangu-Weather</button> <button id="btn-fcnv2" class="fc-btn" onclick="selectModel('fcnv2')">FourCastNet v2</button> <button id="btn-multi" class="fc-btn" onclick="selectModel('multi')">Multi-model mean</button> </div> <div class="fc-row"> <span class="fc-label">Variable:</span> <button id="var-t2m" class="fc-var-btn active" onclick="selectVar('t2m')">T2m</button> <button id="var-t850" class="fc-var-btn" onclick="selectVar('t850')">T850</button> <button id="var-q850" class="fc-var-btn" onclick="selectVar('q850')" title="Available for Pangu-Weather only">Q850</button> <button id="var-z500" class="fc-var-btn" onclick="selectVar('z500')">Z500</button> <button id="var-msl" class="fc-var-btn" onclick="selectVar('msl')">MSLP</button> </div> <div class="fc-row"> <span class="fc-label">Region:</span> <button id="region-global" class="fc-btn active" onclick="selectRegion('global')">Global</button> <button id="region-europe" class="fc-btn" onclick="selectRegion('europe')">Europe</button> </div> <div class="fc-row"> <span class="fc-label">View:</span> <button id="view-acc_signal" class="fc-btn active" onclick="selectView('acc_signal')">Attribution Signal</button> <button id="view-init_delta" class="fc-btn" onclick="selectView('init_delta')" title="The Factual − PGW perturbation applied to the initial condition">Initial-Condition Perturbation</button> </div> <div class="fc-row"> <span class="fc-label">Counterfactual:</span> <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="CMIP6 multi-model mean warming, 1980-2014 minus 1850-1900: 0.86 K global mean">1980–2014 (default, +0.9 K)</button> <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="CMIP6 ensemble-mean warming under SSP5-8.5, 2010-2040 minus 1850-1900: 1.53 K global mean — a larger, more recent warming signal than the default">2010–2040 (SSP5-8.5, +1.5 K)</button> </div> <h3 id="fc-title" style="margin-top:14px;">2 m Temperature — Attribution Signal</h3> <div class="fc-pair"> <div> <img id="fc-img" class="forecast-img" src="" alt="ACC signal" onclick="zoomImg(this)"> </div> </div> <div class="fc-slider-box"> <div class="fc-slider-top"> <button class="fc-step-btn" onclick="stepDate(-1)" title="Previous (left arrow)">◀</button> <button class="fc-step-btn" id="fc-play" style="width:64px;" onclick="togglePlay()" title="Play / pause">Play</button> <button class="fc-step-btn" onclick="stepDate(1)" title="Next (right arrow)">▶</button> <span id="fc-date-label"></span> <span id="fc-init-label"></span> </div> <input type="range" id="fc-slider" min="0" max="0" step="1" value="0" aria-label="Forecast verification date"> <div id="fc-ticks"></div> </div> <script>
+// DATES_START (rewritten daily by update_website.py; oldest first, keys are verification times YYYYMMDDHH)
+var fcDates = ['2026091206', '2026091212', '2026091218', '2026091300', '2026091306', '2026091312', '2026091318', '2026091400', '2026091406', '2026091412', '2026091418', '2026091500', '2026091506', '2026091512', '2026091518', '2026091600', '2026091606', '2026091612', '2026091618', '2026091700'];
+// DATES_END
+
+var currentModel  = 'pangu';
+var currentVar    = 't2m';
+var currentRegion = 'global';
+var currentView   = 'acc_signal';
+var currentCF     = 'default';
+var currentIdx    = fcDates.length - 1;
+var playTimer     = null;
+
+var VAR_TITLES = {
+  t2m:  '2 m Temperature',
+  t850: '850 hPa Temperature',
+  q850: '850 hPa Specific Humidity <small style="font-size:13px;color:#888;">(Pangu only)</small>',
+  z500: '500 hPa Geopotential Height',
+  msl:  'Mean Sea Level Pressure'
+};
+var VIEW_TITLES = {
+  acc_signal: 'Attribution Signal',
+  init_delta: 'Initial-Condition Perturbation'
+};
+var Q850_MODELS = ['pangu'];
+var CF_TITLES = {
+  'default':           '1980&ndash;2014 warming, +0.9 K global mean (default)',
+  'ssp585-2010-2040':  '2010&ndash;2040 warming, SSP5-8.5, +1.5 K global mean'
+};
+
+function fmt(key) {
+  return key.slice(0,4) + '-' + key.slice(4,6) + '-' + key.slice(6,8) + ' ' + key.slice(8,10) + ' UTC';
+}
+function initOf(key) {
+  var d = new Date(Date.UTC(+key.slice(0,4), +key.slice(4,6)-1, +key.slice(6,8), +key.slice(8,10)) - 48*3600*1000);
+  var p = function(n) { return (n < 10 ? '0' : '') + n; };
+  return d.getUTCFullYear() + '-' + p(d.getUTCMonth()+1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + 'Z';
+}
+var IMAGES_BASE = 'https://bernatj.github.io/ai-attribution-forecast-images';
+function imgSrc(model, v, view, kind, cf, key) {
+  // Both views shown on this page (acc_signal, init_delta) depend on the counterfactual, so a
+  // non-default choice inserts a tag before the date, matching update_website.py's copy_alt_images().
+  var cfTag = cf === 'default' ? '' : ('_' + cf);
+  return IMAGES_BASE + '/archive/' + key + '/' + model + '_' + v + '_' + view + kind + cfTag + '_' + key + '.png';
+}
+function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
+
+function zoomImg(img) {
+  document.getElementById('fc-lightbox-img').src = img.src;
+  document.getElementById('fc-lightbox').style.display = 'block';
+}
+
+function updateImages() {
+  var key = fcDates[currentIdx];
+  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, currentView, regionKind(currentRegion), currentCF, key);
+  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; ' + VIEW_TITLES[currentView] +
+    ' <small style="font-size:14px;color:#888;">(' + CF_TITLES[currentCF] + ')</small>';
+  var star = currentIdx === fcDates.length-1 ? '  ★ latest' : '';
+  if (currentView === 'init_delta') {
+    document.getElementById('fc-date-label').textContent = 'Init ' + initOf(key) + star;
+    document.getElementById('fc-init-label').textContent = 'perturbation applied at lead 0 h (Factual − PGW)';
+  } else {
+    document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + star;
+    document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
+  }
+  document.getElementById('fc-slider').value = currentIdx;
+}
+
+// Preload every date for the current model/variable/view/region so scrubbing is instant.
+function preloadAll() {
+  var kind = regionKind(currentRegion);
+  fcDates.forEach(function(k) {
+    (new Image()).src = imgSrc(currentModel, currentVar, currentView, kind, currentCF, k);
+  });
+}
+
+function selectModel(m) {
+  currentModel = m;
+  document.querySelectorAll('.fc-btn[id^="btn-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
+  var hasQ = Q850_MODELS.indexOf(m) !== -1;
+  document.getElementById('var-q850').disabled = !hasQ;
+  if (!hasQ && currentVar === 'q850') { selectVar('t2m'); return; }
+  updateImages(); preloadAll();
+}
+
+function selectVar(v) {
+  currentVar = v;
+  document.querySelectorAll('.fc-var-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'var-' + v); });
+  updateImages(); preloadAll();
+}
+
+function selectRegion(r) {
+  currentRegion = r;
+  document.querySelectorAll('.fc-btn[id^="region-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'region-' + r); });
+  updateImages(); preloadAll();
+}
+
+function selectView(v) {
+  currentView = v;
+  document.querySelectorAll('.fc-btn[id^="view-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'view-' + v); });
+  updateImages(); preloadAll();
+}
+
+function selectCF(cf) {
+  currentCF = cf;
+  document.querySelectorAll('.fc-btn[id^="cf-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'cf-' + cf); });
+  updateImages(); preloadAll();
+}
+
+function setIdx(i) {
+  currentIdx = Math.max(0, Math.min(fcDates.length - 1, i));
+  updateImages();
+}
+function stepDate(d) { setIdx(currentIdx + d); }
+
+function togglePlay() {
+  var btn = document.getElementById('fc-play');
+  if (playTimer) { clearInterval(playTimer); playTimer = null; btn.textContent = 'Play'; return; }
+  btn.textContent = 'Pause';
+  if (currentIdx >= fcDates.length - 1) setIdx(0);
+  playTimer = setInterval(function() {
+    if (currentIdx >= fcDates.length - 1) { togglePlay(); return; }
+    stepDate(1);
+  }, 700);
+}
+
+function buildTicks() {
+  var box = document.getElementById('fc-ticks');
+  box.innerHTML = '';
+  var n = fcDates.length;
+  var mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  fcDates.forEach(function(k, i) {
+    if (k.slice(8,10) !== '00' && i !== 0 && i !== n-1) return;      // label each day at 00 UTC, plus both ends
+    var lbl = (+k.slice(6,8)) + ' ' + mo[+k.slice(4,6)-1] + (k.slice(8,10) !== '00' ? ' ' + k.slice(8,10) + 'Z' : '');
+    var s = document.createElement('span');
+    s.style.left = (n > 1 ? 100 * i / (n-1) : 0) + '%';
+    s.textContent = lbl;
+    box.appendChild(s);
+  });
+}
+
+document.getElementById('fc-slider').max = fcDates.length - 1;
+document.getElementById('fc-slider').addEventListener('input', function() { setIdx(+this.value); });
+document.addEventListener('keydown', function(e) {
+  if (e.target && (e.target.tagName === 'INPUT' && e.target.type !== 'range')) return;
+  if (e.key === 'ArrowLeft')  { stepDate(-1); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { stepDate(1);  e.preventDefault(); }
+});
+buildTicks();
+updateImages();
+preloadAll();
+</script> <hr> <p class="text-muted small mt-4"> <em>Last updated: 2026-09-15 00:00 UTC</em>  ·  Counterfactual conditions subtract a CMIP6 ensemble-mean warming delta from ERA5 (pseudo-global-warming approach). The Counterfactual toggle switches between two warming deltas: the default (1980–2014 average minus 1850–1900, global mean +0.86 K) and a larger, more recent one under SSP5-8.5 (2010–2040 average minus 1850–1900, global mean +1.53 K). </p> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Bernat Jiménez Esteve. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-publications",
+          title: "Publications",
+          description: "publications by categories in reversed chronological order. generated by jekyll-scholar.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-bio",
+          title: "bio",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/bio/";
+          },
+        },{id: "dropdown-extratropical-cyclones",
+              title: "Extratropical Cyclones",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/research/cyclones/";
+              },
+            },{id: "dropdown-heatwaves",
+              title: "Heatwaves",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/research/heatwaves/";
+              },
+            },{id: "nav-outreach",
+          title: "Outreach",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/outreach/";
+          },
+        },{id: "nav-projects",
+          title: "Projects",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-ai-forecast-based-attribution",
+          title: "AI-forecast-based Attribution",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/forecast/";
+          },
+        },{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%62%65%72%6E%61%74%6A%69@%75%63%6D.%65%73", "_blank");
+        },
+      },{
+        id: 'social-scholar',
+        title: 'Google Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=U0XZzqAAAAAJ", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0003-2706-5309", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/bernatj", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/bernat-jimenez-esteve-148437a3", "_blank");
+        },
+      },{
+        id: 'social-bluesky',
+        title: 'Bluesky',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://bsky.app/profile/bernat-jimenez.bsky.social", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>

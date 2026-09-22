@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://bernatj.github.io/sitemap.xml
