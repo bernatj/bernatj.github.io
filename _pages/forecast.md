@@ -145,8 +145,9 @@ function initOf(key) {
   var p = function(n) { return (n < 10 ? '0' : '') + n; };
   return d.getUTCFullYear() + '-' + p(d.getUTCMonth()+1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + 'Z';
 }
+var IMAGES_BASE = 'https://bernatj.github.io/ai-attribution-forecast-images';
 function imgSrc(model, v, view, kind, key) {
-  return '/assets/img/forecast/archive/' + key + '/' + model + '_' + v + '_' + view + kind + '_' + key + '.png';
+  return IMAGES_BASE + '/archive/' + key + '/' + model + '_' + v + '_' + view + kind + '_' + key + '.png';
 }
 function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
 
