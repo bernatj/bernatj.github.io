@@ -92,6 +92,13 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="view-init_delta" class="fc-btn"        onclick="selectView('init_delta')" title="The Factual − PGW perturbation applied to the initial condition">Initial-Condition Perturbation</button>
 </div>
 
+<!-- Counterfactual selector -->
+<div class="fc-row">
+  <span class="fc-label">Counterfactual:</span>
+  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="CMIP6 multi-model mean warming, 1980-2014 minus 1850-1900">1980&ndash;2014 (default)</button>
+  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="CMIP6 ensemble-mean warming under SSP5-8.5, 2010-2040 minus 1850-1900 — a larger, more recent warming signal than the default">2010&ndash;2040 (SSP5-8.5)</button>
+</div>
+
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
   <div>
@@ -121,6 +128,7 @@ var currentModel  = 'pangu';
 var currentVar    = 't2m';
 var currentRegion = 'global';
 var currentView   = 'acc_signal';
+var currentCF     = 'default';
 var currentIdx    = fcDates.length - 1;
 var playTimer     = null;
 
@@ -136,6 +144,10 @@ var VIEW_TITLES = {
   init_delta: 'Initial-Condition Perturbation'
 };
 var Q850_MODELS = ['pangu'];
+var CF_TITLES = {
+  'default':           '1980&ndash;2014 warming (default)',
+  'ssp585-2010-2040':  '2010&ndash;2040 warming, SSP5-8.5'
+};
 
 function fmt(key) {
   return key.slice(0,4) + '-' + key.slice(4,6) + '-' + key.slice(6,8) + ' ' + key.slice(8,10) + ' UTC';
@@ -146,8 +158,11 @@ function initOf(key) {
   return d.getUTCFullYear() + '-' + p(d.getUTCMonth()+1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + 'Z';
 }
 var IMAGES_BASE = 'https://bernatj.github.io/ai-attribution-forecast-images';
-function imgSrc(model, v, view, kind, key) {
-  return IMAGES_BASE + '/archive/' + key + '/' + model + '_' + v + '_' + view + kind + '_' + key + '.png';
+function imgSrc(model, v, view, kind, cf, key) {
+  // Both views shown on this page (acc_signal, init_delta) depend on the counterfactual, so a
+  // non-default choice inserts a tag before the date, matching update_website.py's copy_alt_images().
+  var cfTag = cf === 'default' ? '' : ('_' + cf);
+  return IMAGES_BASE + '/archive/' + key + '/' + model + '_' + v + '_' + view + kind + cfTag + '_' + key + '.png';
 }
 function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
 
@@ -158,8 +173,9 @@ function zoomImg(img) {
 
 function updateImages() {
   var key = fcDates[currentIdx];
-  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, currentView, regionKind(currentRegion), key);
-  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; ' + VIEW_TITLES[currentView];
+  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, currentView, regionKind(currentRegion), currentCF, key);
+  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; ' + VIEW_TITLES[currentView] +
+    ' <small style="font-size:14px;color:#888;">(' + CF_TITLES[currentCF] + ')</small>';
   var star = currentIdx === fcDates.length-1 ? '  ★ latest' : '';
   if (currentView === 'init_delta') {
     document.getElementById('fc-date-label').textContent = 'Init ' + initOf(key) + star;
@@ -175,7 +191,7 @@ function updateImages() {
 function preloadAll() {
   var kind = regionKind(currentRegion);
   fcDates.forEach(function(k) {
-    (new Image()).src = imgSrc(currentModel, currentVar, currentView, kind, k);
+    (new Image()).src = imgSrc(currentModel, currentVar, currentView, kind, currentCF, k);
   });
 }
 
@@ -203,6 +219,12 @@ function selectRegion(r) {
 function selectView(v) {
   currentView = v;
   document.querySelectorAll('.fc-btn[id^="view-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'view-' + v); });
+  updateImages(); preloadAll();
+}
+
+function selectCF(cf) {
+  currentCF = cf;
+  document.querySelectorAll('.fc-btn[id^="cf-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'cf-' + cf); });
   updateImages(); preloadAll();
 }
 
@@ -254,6 +276,8 @@ preloadAll();
 
 <p class="text-muted small mt-4">
 <em>Last updated: 2026-09-15 00:00 UTC</em> &nbsp;&middot;&nbsp;
-Counterfactual conditions use the CMIP6 multi-model mean warming delta subtracted from ERA5
-(pseudo-global-warming approach).
+Counterfactual conditions subtract a CMIP6 ensemble-mean warming delta from ERA5
+(pseudo-global-warming approach). The Counterfactual toggle switches between two warming
+deltas: the default (1980&ndash;2014 average minus 1850&ndash;1900) and a larger, more recent
+one under SSP5-8.5 (2010&ndash;2040 average minus 1850&ndash;1900).
 </p>
