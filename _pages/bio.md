@@ -44,6 +44,10 @@ nav_order: 3
 - **Regina Ortiz Martin** (ongoing, expected 2028) — *Avances en la caracterización de olas de calor* · IGEO (CSIC-UCM). Co-supervised with D. Barriopedro, R. García-Herrera, S. Collazo.
 
 ### Master Theses
+- **Oscar Mata** (2026) — *Attribution of Extreme Events to Climate Change* · Universidad Complutense de Madrid. Co-supervised with R. García-Herrera.
+- **Bremilda Sutizal** (2026) — *Elaboración de modelos de ML para determinar la concentración de NO₂ en la ciudad de Sevilla* · Universitat de Barcelona. Co-supervised with D. J. Vicente.
+- **Oscar Magallón** (2026) — *Atmospheric Blocking in the Northern Hemisphere: Climatology and Surface Impacts* · Universitat de Barcelona.
+- **Marta Jorge** (2026) — *Estudio de la serie meteorológica del Observatorio de Paranal de 1999 a 2025* · Universitat de Barcelona. Co-supervised with A. Arias, M. Gaug.
 - **Jaime Guash** (2025) — *Do Artificial Intelligence Weather Models Simulate Atmospheric Variability Correctly?* · Universidad Complutense de Madrid. Co-supervised with R. García-Herrera.
 - **Elizabeth Weirich Benet** (2021) — *Heat Wave Prediction with Machine Learning* · ETH Zürich. Co-supervised with D. Domeisen, J. Cohen, E. Fraenkel.
 - **Marc Gerber** (2019) — *Analysis of Rossby Wave Phase Speeds Ahead of Sudden Stratospheric Warming Events* · ETH Zürich. Co-supervised with D. Domeisen.
