@@ -18,11 +18,13 @@ nav_order: 3
 
 ## Current Position
 
-**2024 – present** &nbsp; "César Nombela" Postdoctoral Fellow · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
+**July 2026 – present** &nbsp; "César Nombela" Postdoctoral Fellow · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
 
 ---
 
 ## Former Affiliations
+
+**2024 – 2026** &nbsp; Postdoctoral Researcher · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
 
 **2022 – 2023** &nbsp; Recognised Researcher (R2) · Barcelona Supercomputing Center (BSC), Spain
 

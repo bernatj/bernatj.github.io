@@ -21,8 +21,14 @@ cv:
       - company: Instituto de Geociencias (IGEO, CSIC-UCM)
         position: "\"César Nombela\" Postdoctoral Fellow"
         location: Madrid, Spain
-        start_date: 2023
+        start_date: 2026
         end_date: present
+        summary: Research on atmospheric dynamics, heatwaves, climate extremes, and sub-seasonal-to-seasonal predictability.
+      - company: Instituto de Geociencias (IGEO, CSIC-UCM)
+        position: Postdoctoral Researcher
+        location: Madrid, Spain
+        start_date: 2024
+        end_date: 2026
         summary: Research on atmospheric dynamics, heatwaves, climate extremes, and sub-seasonal-to-seasonal predictability.
 
     Education:
