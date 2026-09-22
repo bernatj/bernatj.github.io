@@ -78,15 +78,17 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
 </div>
 
+<!-- Region selector -->
+<div class="fc-row">
+  <span class="fc-label">Region:</span>
+  <button id="region-global" class="fc-btn active" onclick="selectRegion('global')">Global</button>
+  <button id="region-europe" class="fc-btn"        onclick="selectRegion('europe')">Europe</button>
+</div>
+
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
   <div>
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Global</p>
-    <img id="fc-img-global" class="forecast-img" src="" alt="ACC signal global" onclick="zoomImg(this)">
-  </div>
-  <div>
-    <p style="margin:0 0 4px;font-size:12px;color:#666;">Europe</p>
-    <img id="fc-img-europe" class="forecast-img" src="" alt="ACC signal Europe" onclick="zoomImg(this)">
+    <img id="fc-img" class="forecast-img" src="" alt="ACC signal" onclick="zoomImg(this)">
   </div>
 </div>
 
@@ -108,10 +110,11 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 var fcDates = ['2026091206', '2026091212', '2026091218', '2026091300', '2026091306', '2026091312', '2026091318', '2026091400', '2026091406', '2026091412', '2026091418', '2026091500', '2026091506', '2026091512', '2026091518', '2026091600', '2026091606', '2026091612', '2026091618', '2026091700'];
 // DATES_END
 
-var currentModel = 'pangu';
-var currentVar   = 't2m';
-var currentIdx   = fcDates.length - 1;
-var playTimer    = null;
+var currentModel  = 'pangu';
+var currentVar    = 't2m';
+var currentRegion = 'global';
+var currentIdx    = fcDates.length - 1;
+var playTimer     = null;
 
 var VAR_TITLES = {
   t2m:  '2 m Temperature',
@@ -133,6 +136,7 @@ function initOf(key) {
 function imgSrc(model, v, kind, key) {
   return '/assets/img/forecast/archive/' + key + '/' + model + '_' + v + '_acc_signal' + kind + '_' + key + '.png';
 }
+function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
 
 function zoomImg(img) {
   document.getElementById('fc-lightbox-img').src = img.src;
@@ -141,25 +145,24 @@ function zoomImg(img) {
 
 function updateImages() {
   var key = fcDates[currentIdx];
-  document.getElementById('fc-img-global').src = imgSrc(currentModel, currentVar, '', key);
-  document.getElementById('fc-img-europe').src = imgSrc(currentModel, currentVar, '_europe', key);
+  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, regionKind(currentRegion), key);
   document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; Attribution Signal';
   document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + (currentIdx === fcDates.length-1 ? '  ★ latest' : '');
   document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
   document.getElementById('fc-slider').value = currentIdx;
 }
 
-// Preload every date for the current model/variable so scrubbing is instant.
+// Preload every date for the current model/variable/region so scrubbing is instant.
 function preloadAll() {
+  var kind = regionKind(currentRegion);
   fcDates.forEach(function(k) {
-    (new Image()).src = imgSrc(currentModel, currentVar, '', k);
-    (new Image()).src = imgSrc(currentModel, currentVar, '_europe', k);
+    (new Image()).src = imgSrc(currentModel, currentVar, kind, k);
   });
 }
 
 function selectModel(m) {
   currentModel = m;
-  document.querySelectorAll('.fc-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
+  document.querySelectorAll('.fc-btn[id^="btn-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
   var hasQ = Q850_MODELS.indexOf(m) !== -1;
   document.getElementById('var-q850').disabled = !hasQ;
   if (!hasQ && currentVar === 'q850') { selectVar('t2m'); return; }
@@ -169,6 +172,12 @@ function selectModel(m) {
 function selectVar(v) {
   currentVar = v;
   document.querySelectorAll('.fc-var-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'var-' + v); });
+  updateImages(); preloadAll();
+}
+
+function selectRegion(r) {
+  currentRegion = r;
+  document.querySelectorAll('.fc-btn[id^="region-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'region-' + r); });
   updateImages(); preloadAll();
 }
 
