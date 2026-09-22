@@ -85,6 +85,13 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="region-europe" class="fc-btn"        onclick="selectRegion('europe')">Europe</button>
 </div>
 
+<!-- View selector -->
+<div class="fc-row">
+  <span class="fc-label">View:</span>
+  <button id="view-acc_signal" class="fc-btn active" onclick="selectView('acc_signal')">Attribution Signal</button>
+  <button id="view-init_delta" class="fc-btn"        onclick="selectView('init_delta')" title="The Factual − PGW perturbation applied to the initial condition">Initial-Condition Perturbation</button>
+</div>
+
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
   <div>
@@ -113,6 +120,7 @@ var fcDates = ['2026091206', '2026091212', '2026091218', '2026091300', '20260913
 var currentModel  = 'pangu';
 var currentVar    = 't2m';
 var currentRegion = 'global';
+var currentView   = 'acc_signal';
 var currentIdx    = fcDates.length - 1;
 var playTimer     = null;
 
@@ -122,6 +130,10 @@ var VAR_TITLES = {
   q850: '850 hPa Specific Humidity <small style="font-size:13px;color:#888;">(Pangu only)</small>',
   z500: '500 hPa Geopotential Height',
   msl:  'Mean Sea Level Pressure'
+};
+var VIEW_TITLES = {
+  acc_signal: 'Attribution Signal',
+  init_delta: 'Initial-Condition Perturbation'
 };
 var Q850_MODELS = ['pangu'];
 
@@ -133,8 +145,8 @@ function initOf(key) {
   var p = function(n) { return (n < 10 ? '0' : '') + n; };
   return d.getUTCFullYear() + '-' + p(d.getUTCMonth()+1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + 'Z';
 }
-function imgSrc(model, v, kind, key) {
-  return '/assets/img/forecast/archive/' + key + '/' + model + '_' + v + '_acc_signal' + kind + '_' + key + '.png';
+function imgSrc(model, v, view, kind, key) {
+  return '/assets/img/forecast/archive/' + key + '/' + model + '_' + v + '_' + view + kind + '_' + key + '.png';
 }
 function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
 
@@ -145,18 +157,24 @@ function zoomImg(img) {
 
 function updateImages() {
   var key = fcDates[currentIdx];
-  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, regionKind(currentRegion), key);
-  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; Attribution Signal';
-  document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + (currentIdx === fcDates.length-1 ? '  ★ latest' : '');
-  document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
+  document.getElementById('fc-img').src = imgSrc(currentModel, currentVar, currentView, regionKind(currentRegion), key);
+  document.getElementById('fc-title').innerHTML = VAR_TITLES[currentVar] + ' &mdash; ' + VIEW_TITLES[currentView];
+  var star = currentIdx === fcDates.length-1 ? '  ★ latest' : '';
+  if (currentView === 'init_delta') {
+    document.getElementById('fc-date-label').textContent = 'Init ' + initOf(key) + star;
+    document.getElementById('fc-init-label').textContent = 'perturbation applied at lead 0 h (Factual − PGW)';
+  } else {
+    document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + star;
+    document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
+  }
   document.getElementById('fc-slider').value = currentIdx;
 }
 
-// Preload every date for the current model/variable/region so scrubbing is instant.
+// Preload every date for the current model/variable/view/region so scrubbing is instant.
 function preloadAll() {
   var kind = regionKind(currentRegion);
   fcDates.forEach(function(k) {
-    (new Image()).src = imgSrc(currentModel, currentVar, kind, k);
+    (new Image()).src = imgSrc(currentModel, currentVar, currentView, kind, k);
   });
 }
 
@@ -178,6 +196,12 @@ function selectVar(v) {
 function selectRegion(r) {
   currentRegion = r;
   document.querySelectorAll('.fc-btn[id^="region-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'region-' + r); });
+  updateImages(); preloadAll();
+}
+
+function selectView(v) {
+  currentView = v;
+  document.querySelectorAll('.fc-btn[id^="view-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'view-' + v); });
   updateImages(); preloadAll();
 }
 
