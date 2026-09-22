@@ -95,8 +95,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <!-- Counterfactual selector -->
 <div class="fc-row">
   <span class="fc-label">Counterfactual:</span>
-  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="CMIP6 multi-model mean warming, 1980-2014 minus 1850-1900">1980&ndash;2014 (default)</button>
-  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="CMIP6 ensemble-mean warming under SSP5-8.5, 2010-2040 minus 1850-1900 — a larger, more recent warming signal than the default">2010&ndash;2040 (SSP5-8.5)</button>
+  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="CMIP6 multi-model mean warming, 1980-2014 minus 1850-1900: 0.86 K global mean">1980&ndash;2014 (default, +0.9&nbsp;K)</button>
+  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="CMIP6 ensemble-mean warming under SSP5-8.5, 2010-2040 minus 1850-1900: 1.53 K global mean — a larger, more recent warming signal than the default">2010&ndash;2040 (SSP5-8.5, +1.5&nbsp;K)</button>
 </div>
 
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
@@ -145,8 +145,8 @@ var VIEW_TITLES = {
 };
 var Q850_MODELS = ['pangu'];
 var CF_TITLES = {
-  'default':           '1980&ndash;2014 warming (default)',
-  'ssp585-2010-2040':  '2010&ndash;2040 warming, SSP5-8.5'
+  'default':           '1980&ndash;2014 warming, +0.9 K global mean (default)',
+  'ssp585-2010-2040':  '2010&ndash;2040 warming, SSP5-8.5, +1.5 K global mean'
 };
 
 function fmt(key) {
@@ -278,6 +278,7 @@ preloadAll();
 <em>Last updated: 2026-09-15 00:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions subtract a CMIP6 ensemble-mean warming delta from ERA5
 (pseudo-global-warming approach). The Counterfactual toggle switches between two warming
-deltas: the default (1980&ndash;2014 average minus 1850&ndash;1900) and a larger, more recent
-one under SSP5-8.5 (2010&ndash;2040 average minus 1850&ndash;1900).
+deltas: the default (1980&ndash;2014 average minus 1850&ndash;1900, global mean +0.86&nbsp;K)
+and a larger, more recent one under SSP5-8.5 (2010&ndash;2040 average minus 1850&ndash;1900,
+global mean +1.53&nbsp;K).
 </p>
