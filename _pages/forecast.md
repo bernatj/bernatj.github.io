@@ -73,7 +73,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <span class="fc-label">Variable:</span>
   <button id="var-t2m"  class="fc-var-btn active" onclick="selectVar('t2m')">T2m</button>
   <button id="var-t850" class="fc-var-btn"        onclick="selectVar('t850')">T850</button>
-  <button id="var-q850" class="fc-var-btn"        onclick="selectVar('q850')" title="Available for Pangu-Weather only">Q850</button>
+  <button id="var-q850" class="fc-var-btn"        onclick="selectVar('q850')" title="Specific humidity at 850 hPa. FourCastNet v2 saves relative humidity natively; its Q850 is derived from RH and temperature.">Q850</button>
+  <button id="var-rh850" class="fc-var-btn"       onclick="selectVar('rh850')" title="Relative humidity at 850 hPa. Pangu-Weather saves specific humidity natively; its RH850 is derived from Q and temperature.">RH850</button>
   <button id="var-z500" class="fc-var-btn"        onclick="selectVar('z500')">Z500</button>
   <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
 </div>
@@ -140,17 +141,17 @@ var currentIdx    = fcDates.length - 1;
 var playTimer     = null;
 
 var VAR_TITLES = {
-  t2m:  '2 m Temperature',
-  t850: '850 hPa Temperature',
-  q850: '850 hPa Specific Humidity <small style="font-size:13px;color:#888;">(Pangu only)</small>',
-  z500: '500 hPa Geopotential Height',
-  msl:  'Mean Sea Level Pressure'
+  t2m:   '2 m Temperature',
+  t850:  '850 hPa Temperature',
+  q850:  '850 hPa Specific Humidity',
+  rh850: '850 hPa Relative Humidity',
+  z500:  '500 hPa Geopotential Height',
+  msl:   'Mean Sea Level Pressure'
 };
 var VIEW_TITLES = {
   acc_signal: 'Attribution Signal',
   init_delta: 'Initial-Condition Perturbation'
 };
-var Q850_MODELS = ['pangu'];
 var CF_TITLES = {
   'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (default)',
   'ssp585-2010-2040':  'PD 2010&ndash;2040 (SSP5-8.5) &minus; PI, +1.5 K global mean'
@@ -205,9 +206,6 @@ function preloadAll() {
 function selectModel(m) {
   currentModel = m;
   document.querySelectorAll('.fc-btn[id^="btn-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
-  var hasQ = Q850_MODELS.indexOf(m) !== -1;
-  document.getElementById('var-q850').disabled = !hasQ;
-  if (!hasQ && currentVar === 'q850') { selectVar('t2m'); return; }
   updateImages(); preloadAll();
 }
 
