@@ -275,7 +275,7 @@ preloadAll();
 ---
 
 <p class="text-muted small mt-4">
-<em>Last updated: 2026-09-14 18:00 UTC</em> &nbsp;&middot;&nbsp;
+<em>Last updated: 2026-09-15 00:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions subtract a CMIP6 ensemble-mean warming delta from ERA5
 (pseudo-global-warming approach). The Counterfactual toggle switches between two warming
 deltas: the default (1980&ndash;2014 average minus 1850&ndash;1900, global mean +0.86&nbsp;K)
