@@ -95,9 +95,16 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <!-- Counterfactual selector -->
 <div class="fc-row">
   <span class="fc-label">Counterfactual:</span>
-  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="CMIP6 multi-model mean warming, 1980-2014 minus 1850-1900: 0.86 K global mean">1980&ndash;2014 (default, +0.9&nbsp;K)</button>
-  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="CMIP6 ensemble-mean warming under SSP5-8.5, 2010-2040 minus 1850-1900: 1.53 K global mean — a larger, more recent warming signal than the default">2010&ndash;2040 (SSP5-8.5, +1.5&nbsp;K)</button>
+  <span style="font-size:12px;color:#888;margin-right:2px;">Present Day (PD) &minus; Pre-Industrial (PI):</span>
+  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="PD (1980-2014) minus PI (1850-1900), CMIP6 10-model mean: 0.86 K global mean">PD 1980&ndash;2014 (+0.9&nbsp;K)</button>
+  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="PD (2010-2040, SSP5-8.5) minus PI (1850-1900), CMIP6 30-model mean: 1.53 K global mean — a larger, more recent warming signal than the default">PD 2010&ndash;2040, SSP5-8.5 (+1.5&nbsp;K)</button>
 </div>
+<p style="font-size:12.5px;color:#888;margin:2px 0 0;">
+  Both counterfactuals are defined the same way &mdash; a CMIP6 multi-model-mean warming delta,
+  <strong>Present Day minus Pre-Industrial (1850&ndash;1900)</strong>, subtracted from ERA5 to build the
+  pseudo-global-warming initial condition. They differ only in which period stands in for "Present Day"
+  and which CMIP6 models feed the ensemble mean &mdash; see the table below.
+</p>
 
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
@@ -145,8 +152,8 @@ var VIEW_TITLES = {
 };
 var Q850_MODELS = ['pangu'];
 var CF_TITLES = {
-  'default':           '1980&ndash;2014 warming, +0.9 K global mean (default)',
-  'ssp585-2010-2040':  '2010&ndash;2040 warming, SSP5-8.5, +1.5 K global mean'
+  'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (default)',
+  'ssp585-2010-2040':  'PD 2010&ndash;2040 (SSP5-8.5) &minus; PI, +1.5 K global mean'
 };
 
 function fmt(key) {
@@ -276,9 +283,48 @@ preloadAll();
 
 <p class="text-muted small mt-4">
 <em>Last updated: 2026-09-16 00:00 UTC</em> &nbsp;&middot;&nbsp;
-Counterfactual conditions subtract a CMIP6 ensemble-mean warming delta from ERA5
-(pseudo-global-warming approach). The Counterfactual toggle switches between two warming
-deltas: the default (1980&ndash;2014 average minus 1850&ndash;1900, global mean +0.86&nbsp;K)
-and a larger, more recent one under SSP5-8.5 (2010&ndash;2040 average minus 1850&ndash;1900,
-global mean +1.53&nbsp;K).
+Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from ERA5
+(pseudo-global-warming approach). Both counterfactuals below are defined the same way &mdash;
+<strong>Present Day (PD) minus Pre-Industrial (PI, 1850&ndash;1900)</strong> &mdash; and differ only in
+which period defines "Present Day" and which CMIP6 models go into the ensemble mean.
 </p>
+
+<table style="width:100%; max-width:900px; border-collapse:collapse; font-size:13px; margin:8px 0 20px;">
+  <thead>
+    <tr style="border-bottom:2px solid #ccc; text-align:left;">
+      <th style="padding:6px 10px 6px 0;">Counterfactual</th>
+      <th style="padding:6px 10px;">Definition</th>
+      <th style="padding:6px 10px;">Global mean</th>
+      <th style="padding:6px 0;">CMIP6 models</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid #e5e5e5; vertical-align:top;">
+      <td style="padding:8px 10px 8px 0;"><strong>Default</strong></td>
+      <td style="padding:8px 10px;">PD (1980&ndash;2014) &minus; PI (1850&ndash;1900)</td>
+      <td style="padding:8px 10px;">+0.86&nbsp;K</td>
+      <td style="padding:8px 0;">
+        <details>
+          <summary style="cursor:pointer;color:#555;">10 models</summary>
+          <span style="color:#666;">AWI-CM-1-1-MR, BCC-CSM2-MR, CAMS-CSM1-0, CanESM5-1, CMCC-CM2-HR4,
+          CMCC-CM2-SR5, CMCC-ESM2, EC-Earth3-CC, EC-Earth3-Veg, EC-Earth3-Veg-LR</span>
+        </details>
+      </td>
+    </tr>
+    <tr style="vertical-align:top;">
+      <td style="padding:8px 10px 8px 0;"><strong>SSP5-8.5, 2010&ndash;2040</strong></td>
+      <td style="padding:8px 10px;">PD (2010&ndash;2040, SSP5-8.5) &minus; PI (1850&ndash;1900)</td>
+      <td style="padding:8px 10px;">+1.53&nbsp;K</td>
+      <td style="padding:8px 0;">
+        <details>
+          <summary style="cursor:pointer;color:#555;">30 models</summary>
+          <span style="color:#666;">AWI-CM-1-1-MR, BCC-CSM2-MR, CAMS-CSM1-0, CIESM, CMCC-CM2-SR5, CMCC-ESM2,
+          CNRM-CM6-1-HR, CNRM-ESM2-1, CanESM5, CanESM5-CanOE, E3SM-1-1, EC-Earth3, EC-Earth3-Veg,
+          EC-Earth3-Veg-LR, FGOALS-g3, GISS-E2-1-G, HadGEM3-GC31-LL, HadGEM3-GC31-MM, INM-CM4-8, INM-CM5-0,
+          IPSL-CM6A-LR, KACE-1-0-G, MIROC6, MPI-ESM1-2-HR, MPI-ESM1-2-LR, NESM3, NorESM2-LM, NorESM2-MM,
+          TaiESM1, UKESM1-0-LL</span>
+        </details>
+      </td>
+    </tr>
+  </tbody>
+</table>
