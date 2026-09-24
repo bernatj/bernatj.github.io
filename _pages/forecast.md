@@ -78,15 +78,6 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="var-z500" class="fc-var-btn"        onclick="selectVar('z500')">Z500</button>
   <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
 </div>
-<p style="font-size:12.5px;color:#888;margin:2px 0 0;">
-  Q850/RH850, native vs derived: FourCastNet v2's counterfactual perturbs relative humidity
-  directly (smooth, like temperature), so its <strong>Q850 is derived</strong> and inherits
-  fine-scale structure from the local temperature field. Pangu-Weather's counterfactual perturbs
-  specific humidity directly, so its <strong>RH850 is derived</strong> the same way. That
-  fine-scale structure is real physics (relative humidity depends exponentially on local
-  temperature &mdash; the Clausius&ndash;Clapeyron relation), not noise, but the model's own
-  native variable is the cleaner climatological signal to trust.
-</p>
 
 <!-- Region selector -->
 <div class="fc-row">
