@@ -24,7 +24,7 @@ latest_posts:
 <style>
 .post-header {
   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-                    url('{{ "/assets/img/image_China.webp" | relative_url }}');
+                    url('{{ "/assets/img/banner_pnw2021_27jun00z.webp" | relative_url }}');   /* ERA5, Pacific Northwest heatwave, 27 Jun 2021 00 UTC */
   background-size: cover;
   background-position: center;
   padding: 3rem 2rem;
