@@ -101,8 +101,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <div class="fc-row">
   <span class="fc-label">Counterfactual:</span>
   <span style="font-size:12px;color:#888;margin-right:2px;">Present Day (PD) &minus; Pre-Industrial (PI):</span>
-  <button id="cf-default" class="fc-btn active" onclick="selectCF('default')" title="PD (1980-2014) minus PI (1850-1900), CMIP6 10-model mean: 0.86 K global mean">PD 1980&ndash;2014 (+0.9&nbsp;K)</button>
-  <button id="cf-ssp585-2010-2040" class="fc-btn" onclick="selectCF('ssp585-2010-2040')" title="PD (2010-2040, SSP5-8.5) minus PI (1850-1900), CMIP6 30-model mean: 1.53 K global mean — a larger, more recent warming signal than the default">PD 2010&ndash;2040, SSP5-8.5 (+1.5&nbsp;K)</button>
+  <button id="cf-default" class="fc-btn" onclick="selectCF('default')" title="PD (1980-2014) minus PI (1850-1900), CMIP6 10-model mean: 0.86 K global mean. Produced until 30 Sep 2026; newer dates only have the SSP5-8.5 2010-2040 counterfactual.">PD 1980&ndash;2014 (+0.9&nbsp;K, until 30&nbsp;Sep&nbsp;2026)</button>
+  <button id="cf-ssp585-2010-2040" class="fc-btn active" onclick="selectCF('ssp585-2010-2040')" title="PD (2010-2040, SSP5-8.5) minus PI (1850-1900), CMIP6 30-model mean: 1.53 K global mean — a larger, more recent warming signal than the default">PD 2010&ndash;2040, SSP5-8.5 (+1.5&nbsp;K)</button>
 </div>
 <p style="font-size:12.5px;color:#888;margin:2px 0 0;">
   Both counterfactuals are defined the same way &mdash; a CMIP6 multi-model-mean warming delta,
@@ -121,7 +121,13 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
   <div>
-    <img id="fc-img" class="forecast-img" src="" alt="ACC signal" onclick="zoomImg(this)">
+    <img id="fc-img" class="forecast-img" src="" alt="ACC signal" onclick="zoomImg(this)"
+         onload="this.style.display=''; document.getElementById('fc-missing').style.display='none';"
+         onerror="this.style.display='none'; document.getElementById('fc-missing').style.display='block';">
+    <div id="fc-missing" style="display:none; padding:40px 16px; text-align:center; color:#777; background:#f4f6f8; border-radius:8px;">
+      No map for this combination and date. The PD 1980&ndash;2014 (+0.9&nbsp;K) counterfactual was produced until
+      30 Sep 2026 and AIFS from 20 Sep 2026; choose another counterfactual or date.
+    </div>
   </div>
 </div>
 
@@ -147,7 +153,7 @@ var currentModel  = 'pangu';
 var currentVar    = 't2m';
 var currentRegion = 'global';
 var currentView   = 'acc_signal';
-var currentCF     = 'default';
+var currentCF     = 'ssp585-2010-2040';   // the only counterfactual produced since 2026-10-01
 var currentIdx    = fcDates.length - 1;
 var playTimer     = null;
 
@@ -167,7 +173,7 @@ var VIEW_TITLES = {
   factual: 'Factual'
 };
 var CF_TITLES = {
-  'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (default)',
+  'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (until 30 Sep 2026)',
   'ssp585-2010-2040':  'PD 2010&ndash;2040 (SSP5-8.5) &minus; PI, +1.5 K global mean'
 };
 
@@ -334,7 +340,7 @@ which period defines "Present Day" and which CMIP6 models go into the ensemble m
   </thead>
   <tbody>
     <tr style="border-bottom:1px solid #e5e5e5; vertical-align:top;">
-      <td style="padding:8px 10px 8px 0;"><strong>Default</strong></td>
+      <td style="padding:8px 10px 8px 0;"><strong>PD 1980&ndash;2014</strong><br><span style="color:#888;">produced until 30 Sep 2026</span></td>
       <td style="padding:8px 10px;">PD (1980&ndash;2014) &minus; PI (1850&ndash;1900)</td>
       <td style="padding:8px 10px;">+0.86&nbsp;K</td>
       <td style="padding:8px 0;">
@@ -346,7 +352,7 @@ which period defines "Present Day" and which CMIP6 models go into the ensemble m
       </td>
     </tr>
     <tr style="vertical-align:top;">
-      <td style="padding:8px 10px 8px 0;"><strong>SSP5-8.5, 2010&ndash;2040</strong></td>
+      <td style="padding:8px 10px 8px 0;"><strong>SSP5-8.5, 2010&ndash;2040</strong><br><span style="color:#888;">the only counterfactual since 1 Oct 2026</span></td>
       <td style="padding:8px 10px;">PD (2010&ndash;2040, SSP5-8.5) &minus; PI (1850&ndash;1900)</td>
       <td style="padding:8px 10px;">+1.53&nbsp;K</td>
       <td style="padding:8px 0;">
