@@ -23,7 +23,7 @@ latest_posts:
 
 <style>
 .post-header {
-  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+  background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),   /* light overlay: keeps the map's colours */
                     url('{{ "/assets/img/banner_pnw2021_27jun00z.webp" | relative_url }}');   /* ERA5, Pacific Northwest heatwave, 27 Jun 2021 00 UTC */
   background-size: cover;
   background-position: center;
@@ -34,12 +34,12 @@ latest_posts:
 .post-header .post-title,
 .post-header .post-title span {
   color: #fff !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.85);   /* stronger shadow compensates for the lighter overlay */
 }
 .post-header .desc,
 .post-header .desc a {
   color: rgba(255,255,255,0.88) !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
 }
 </style>
 
