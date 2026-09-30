@@ -316,7 +316,7 @@ preloadAll();
 ---
 
 <p class="text-muted small mt-4">
-<em>Last updated: 2026-09-20 00:00 UTC</em> &nbsp;&middot;&nbsp;
+<em>Last updated: 2026-09-20 06:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from ERA5
 (pseudo-global-warming approach). Both counterfactuals below are defined the same way &mdash;
 <strong>Present Day (PD) minus Pre-Industrial (PI, 1850&ndash;1900)</strong> &mdash; and differ only in
