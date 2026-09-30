@@ -110,14 +110,6 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   pseudo-global-warming initial condition. They differ only in which period stands in for "Present Day"
   and which CMIP6 models feed the ensemble mean &mdash; see the table below.
 </p>
-<p style="font-size:12.5px;color:#888;margin:4px 0 0;">
-  <strong>AIFS</strong> (ECMWF, aifs-single-1.0) also takes skin temperature, soil temperature and 2&nbsp;m dewpoint
-  as inputs. Its counterfactual therefore shifts them consistently with the 2&nbsp;m temperature (SST delta over ocean,
-  2&nbsp;m-temperature delta over land, 2&nbsp;m relative humidity kept); otherwise AIFS pulls the 2&nbsp;m temperature
-  back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
-  FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only (6&nbsp;h accumulation ending at each date).
-</p>
-
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
   <div>
@@ -368,3 +360,11 @@ which period defines "Present Day" and which CMIP6 models go into the ensemble m
     </tr>
   </tbody>
 </table>
+
+<p class="text-muted small">
+  <strong>AIFS</strong> (ECMWF, aifs-single-1.0) also takes skin temperature, soil temperature and 2&nbsp;m dewpoint
+  as inputs. Its counterfactual therefore shifts them consistently with the 2&nbsp;m temperature (SST delta over ocean,
+  2&nbsp;m-temperature delta over land, 2&nbsp;m relative humidity kept); otherwise AIFS pulls the 2&nbsp;m temperature
+  back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
+  FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only (6&nbsp;h accumulation ending at each date).
+</p>
