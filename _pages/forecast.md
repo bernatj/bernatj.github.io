@@ -65,7 +65,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <span class="fc-label">Model:</span>
   <button id="btn-pangu" class="fc-btn active" onclick="selectModel('pangu')">Pangu-Weather</button>
   <button id="btn-fcnv2" class="fc-btn"        onclick="selectModel('fcnv2')">FourCastNet v2</button>
-  <button id="btn-multi" class="fc-btn"        onclick="selectModel('multi')">Multi-model mean</button>
+  <button id="btn-aifs"  class="fc-btn"        onclick="selectModel('aifs')" title="ECMWF AIFS (aifs-single-1.0). Its counterfactual also shifts the surface state (skin and soil temperature, dewpoint) consistently with the 2 m temperature, see below.">AIFS</button>
+  <button id="btn-multi" class="fc-btn"        onclick="selectModel('multi')" title="Mean of Pangu-Weather, FourCastNet v2 and AIFS">Multi-model mean</button>
 </div>
 
 <!-- Variable selector -->
@@ -77,6 +78,7 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="var-rh850" class="fc-var-btn"       onclick="selectVar('rh850')" title="Relative humidity at 850 hPa. Pangu-Weather saves specific humidity natively; its RH850 is derived from Q and temperature.">RH850</button>
   <button id="var-z500" class="fc-var-btn"        onclick="selectVar('z500')">Z500</button>
   <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
+  <button id="var-tp"   class="fc-var-btn"        onclick="selectVar('tp')" title="6-hour accumulated precipitation. AIFS only: Pangu-Weather and FourCastNet v2 do not forecast precipitation.">Precip (6&nbsp;h)</button>
 </div>
 
 <!-- Region selector -->
@@ -91,6 +93,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <span class="fc-label">View:</span>
   <button id="view-acc_signal" class="fc-btn active" onclick="selectView('acc_signal')">Attribution Signal</button>
   <button id="view-init_delta" class="fc-btn"        onclick="selectView('init_delta')" title="The Factual − PGW perturbation applied to the initial condition">Initial-Condition Perturbation</button>
+  <button id="view-acc_signal_rel" class="fc-btn" style="display:none;" onclick="selectView('acc_signal_rel')" title="Factual − PGW as a percentage of the counterfactual, masked where the counterfactual has less than 1 mm per 6 h">Relative Change (%)</button>
+  <button id="view-factual" class="fc-btn" style="display:none;" onclick="selectView('factual')" title="Mean factual 6 h precipitation over the same forecasts">Factual</button>
 </div>
 
 <!-- Counterfactual selector -->
@@ -105,6 +109,13 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <strong>Present Day minus Pre-Industrial (1850&ndash;1900)</strong>, subtracted from ERA5 to build the
   pseudo-global-warming initial condition. They differ only in which period stands in for "Present Day"
   and which CMIP6 models feed the ensemble mean &mdash; see the table below.
+</p>
+<p style="font-size:12.5px;color:#888;margin:4px 0 0;">
+  <strong>AIFS</strong> (ECMWF, aifs-single-1.0) also takes skin temperature, soil temperature and 2&nbsp;m dewpoint
+  as inputs. Its counterfactual therefore shifts them consistently with the 2&nbsp;m temperature (SST delta over ocean,
+  2&nbsp;m-temperature delta over land, 2&nbsp;m relative humidity kept); otherwise AIFS pulls the 2&nbsp;m temperature
+  back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
+  FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only (6&nbsp;h accumulation ending at each date).
 </p>
 
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
@@ -146,11 +157,14 @@ var VAR_TITLES = {
   q850:  '850 hPa Specific Humidity',
   rh850: '850 hPa Relative Humidity',
   z500:  '500 hPa Geopotential Height',
-  msl:   'Mean Sea Level Pressure'
+  msl:   'Mean Sea Level Pressure',
+  tp:    '6 h Precipitation (AIFS)'
 };
 var VIEW_TITLES = {
   acc_signal: 'Attribution Signal',
-  init_delta: 'Initial-Condition Perturbation'
+  init_delta: 'Initial-Condition Perturbation',
+  acc_signal_rel: 'Relative Change (%)',
+  factual: 'Factual'
 };
 var CF_TITLES = {
   'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (default)',
@@ -169,7 +183,8 @@ var IMAGES_BASE = 'https://bernatj.github.io/ai-attribution-forecast-images';
 function imgSrc(model, v, view, kind, cf, key) {
   // Both views shown on this page (acc_signal, init_delta) depend on the counterfactual, so a
   // non-default choice inserts a tag before the date, matching update_website.py's copy_alt_images().
-  var cfTag = cf === 'default' ? '' : ('_' + cf);
+  // The factual view does not depend on the counterfactual and is published once, without a tag.
+  var cfTag = (cf === 'default' || view === 'factual') ? '' : ('_' + cf);
   return IMAGES_BASE + '/archive/' + key + '/' + model + '_' + v + '_' + view + kind + cfTag + '_' + key + '.png';
 }
 function regionKind(r) { return r === 'europe' ? '_europe' : ''; }
@@ -188,6 +203,9 @@ function updateImages() {
   if (currentView === 'init_delta') {
     document.getElementById('fc-date-label').textContent = 'Init ' + initOf(key) + star;
     document.getElementById('fc-init-label').textContent = 'perturbation applied at lead 0 h (Factual − PGW)';
+  } else if (currentVar === 'tp') {
+    document.getElementById('fc-date-label').textContent = '6 h accumulation ending ' + fmt(key) + star;
+    document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h) · step through dates to follow its evolution';
   } else {
     document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + star;
     document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h)';
@@ -203,16 +221,34 @@ function preloadAll() {
   });
 }
 
+// Precipitation exists only for AIFS and has no initial-condition view; the Factual and Relative Change views
+// exist only for precipitation. applyAvailability() keeps the model/variable/view combination valid.
+function applyAvailability() {
+  var isTp = currentVar === 'tp';
+  if (isTp) currentModel = 'aifs';
+  if (isTp && currentView === 'init_delta') currentView = 'acc_signal';
+  if (!isTp && (currentView === 'factual' || currentView === 'acc_signal_rel')) currentView = 'acc_signal';
+  document.querySelectorAll('.fc-btn[id^="btn-"]').forEach(function(b) {
+    b.classList.toggle('active', b.id === 'btn-' + currentModel);
+    var off = isTp && b.id !== 'btn-aifs';
+    b.disabled = off; b.style.opacity = off ? 0.4 : ''; b.style.cursor = off ? 'not-allowed' : '';
+  });
+  document.querySelectorAll('.fc-var-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'var-' + currentVar); });
+  document.getElementById('view-init_delta').style.display = isTp ? 'none' : '';
+  document.getElementById('view-factual').style.display = isTp ? '' : 'none';
+  document.getElementById('view-acc_signal_rel').style.display = isTp ? '' : 'none';
+  document.querySelectorAll('.fc-btn[id^="view-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'view-' + currentView); });
+}
+
 function selectModel(m) {
   currentModel = m;
-  document.querySelectorAll('.fc-btn[id^="btn-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'btn-' + m); });
-  updateImages(); preloadAll();
+  if (currentVar === 'tp' && m !== 'aifs') currentVar = 't2m';   // precipitation is AIFS-only
+  applyAvailability(); updateImages(); preloadAll();
 }
 
 function selectVar(v) {
   currentVar = v;
-  document.querySelectorAll('.fc-var-btn').forEach(function(b) { b.classList.toggle('active', b.id === 'var-' + v); });
-  updateImages(); preloadAll();
+  applyAvailability(); updateImages(); preloadAll();
 }
 
 function selectRegion(r) {
@@ -223,8 +259,7 @@ function selectRegion(r) {
 
 function selectView(v) {
   currentView = v;
-  document.querySelectorAll('.fc-btn[id^="view-"]').forEach(function(b) { b.classList.toggle('active', b.id === 'view-' + v); });
-  updateImages(); preloadAll();
+  applyAvailability(); updateImages(); preloadAll();
 }
 
 function selectCF(cf) {
@@ -273,6 +308,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight') { stepDate(1);  e.preventDefault(); }
 });
 buildTicks();
+applyAvailability();
 updateImages();
 preloadAll();
 </script>
