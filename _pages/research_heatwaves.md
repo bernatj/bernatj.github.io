@@ -18,3 +18,13 @@ In late June 2021 an extraordinary heatwave struck the Pacific Northwest of the 
 The animation shows the evolution of the event in the ERA5 reanalysis from 24 June to 3 July 2021: 500 hPa geopotential height contours (588 dam in bold), 850 hPa temperature (shaded above 16 °C, 26 °C contour in red) and the 300 hPa jet stream (shaded above 30 m/s, with wind arrows and the 40 m/s isotach in blue). The panel below tracks the 850 hPa temperature averaged over the blue box (45–55°N, 125–115°W; 24 h running mean), which climbs to close to 30 °C at the end of June before the ridge breaks down in early July.
 
 {% include video.liquid path="assets/video/heatwave_pnw2021_era5_z500_t850_jet300_24jun_to_03jul.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
+
+---
+
+### Iberian Heatwave — August 2018
+
+In early August 2018 the Iberian Peninsula experienced one of its most intense heatwaves on record, with maximum temperatures above 45 °C in parts of Portugal and southwestern Spain. The event was driven by the advection of very hot air from North Africa under a persistent subtropical ridge over the Iberian Peninsula.
+
+The animation shows the evolution of the event in ERA5 from 30 July to 8 August 2018, with the same fields as above. The panel below tracks the 850 hPa temperature averaged over the blue box (36–43°N, 9°W–3°E; 24 h running mean), with the heatwave period (1–7 August) shaded.
+
+{% include video.liquid path="assets/video/heatwave_iberia2018_era5_z500_t850_jet300_30jul_to_08aug.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
