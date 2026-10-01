@@ -29,7 +29,7 @@ Running FourCastNet-v2, Pangu-Weather and NeuralGCM from factual and counterfact
 
 In early August 2018 the Iberian Peninsula experienced one of its most intense heatwaves on record, with maximum temperatures above 45 °C in parts of Portugal and southwestern Spain. The event was driven by the advection of very hot air from North Africa under a persistent subtropical ridge over the Iberian Peninsula.
 
-The animation shows the evolution of the event in ERA5 from 30 July to 8 August 2018, with the same fields as above. The panel below tracks the 850 hPa temperature averaged over the blue box (36–43°N, 9°W–3°E; 24 h running mean), with the heatwave period (1–7 August) shaded.
+The animation shows the evolution of the event in ERA5 from 30 July to 8 August 2018, with the same fields as above. The panel below tracks the 850 hPa temperature averaged over the blue box (36–44°N, 10°W–3°E; 24 h running mean), with the peak of the heatwave (1–6 August) shaded.
 
 {% include video.liquid path="assets/video/heatwave_iberia2018_era5_z500_t850_jet300_30jul_to_08aug.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
 
