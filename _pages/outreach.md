@@ -8,6 +8,8 @@ nav_order: 5
 
 **2026**
 
+- **[EMS-ACAM Webinar 2026](https://youtu.be/eWen_PDw4nk)** — Webinar · *European Meteorological Society (EMS) & ACAM*, July 2026.
+
 - **[La nueva revolución de la predicción meteorológica](https://www.fundacionmuyinteresante.org/la-nueva-revolucion-de-la-prediccion-meteorologica.html)** — *Muy Interesante*, February 2026.
 
 **2025**
