@@ -19,6 +19,10 @@ The animation shows the evolution of the event in the ERA5 reanalysis from 24 Ju
 
 {% include video.liquid path="assets/video/heatwave_pnw2021_era5_z500_t850_jet300_24jun_to_03jul.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
 
+Running FourCastNet-v2, Pangu-Weather and NeuralGCM from factual and counterfactual (pre-industrial) initial conditions gives the anthropogenic climate change (ACC) signal of the event:
+
+{% include figure.liquid path="assets/img/heatwave_pnw2021_acc_signal_t850_ai_models.png" class="img-fluid rounded z-depth-1" zoomable=true caption="Climate change signal in 850 hPa temperature (factual minus counterfactual forecasts) for the 2021 Pacific Northwest heatwave in three AI weather models, averaged over forecasts with lead times of 1–5 days valid during the peak of the event (28–30 June 2021). Blue box: heatwave region; green contours: mean 500 hPa geopotential height of the factual forecasts; hatching: signal not statistically significant (p &gt; 0.05). Adapted from Jiménez-Esteve et al. (2025), Fig. 2." %}
+
 ---
 
 ### Iberian Heatwave — August 2018
@@ -28,3 +32,7 @@ In early August 2018 the Iberian Peninsula experienced one of its most intense h
 The animation shows the evolution of the event in ERA5 from 30 July to 8 August 2018, with the same fields as above. The panel below tracks the 850 hPa temperature averaged over the blue box (36–43°N, 9°W–3°E; 24 h running mean), with the heatwave period (1–7 August) shaded.
 
 {% include video.liquid path="assets/video/heatwave_iberia2018_era5_z500_t850_jet300_30jul_to_08aug.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false loop=false %}
+
+The same attribution experiment for the Iberian heatwave:
+
+{% include figure.liquid path="assets/img/heatwave_iberia2018_acc_signal_t850_ai_models.png" class="img-fluid rounded z-depth-1" zoomable=true caption="Climate change signal in 850 hPa temperature (factual minus counterfactual forecasts) for the 2018 Iberian heatwave in three AI weather models, averaged over forecasts with lead times of 1–5 days valid during the peak of the event (1–6 August 2018). Blue box: heatwave region; green contours: mean 500 hPa geopotential height of the factual forecasts; hatching: signal not statistically significant (p &gt; 0.05). Adapted from Jiménez-Esteve et al. (2025), Fig. 2." %}
