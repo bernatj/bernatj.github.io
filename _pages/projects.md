@@ -16,6 +16,8 @@ Extreme events such as heatwaves and heavy precipitation pose growing risks to s
 
 ---
 
+## Past Projects
+
 ### Desarrollo de Servicios Climáticos Operativos
 **Funder:** Recovery and Resilience Facility, NextGeneration EU &nbsp;·&nbsp; **Ref:** CSC2300000  
 **PIs:** J.M. Gutiérrez, S.M. Vicente, D. Barriopedro, S. Beguería, C. Azorín &nbsp;·&nbsp; **Budget:** 6,250,000 €  
@@ -25,7 +27,14 @@ Development of operational climate services for Spain in collaboration with AEME
 
 ---
 
-## Past Projects
+### CLINT: CLImate INTelligence — Extreme events detection, attribution and adaptation design using machine learning
+**Funder:** European Commission, Horizon 2020 &nbsp;·&nbsp; **Ref:** 101003876  
+**Coordinator:** Politecnico di Milano (Italy) &nbsp;·&nbsp; **Budget:** 6,067,720 €  
+**Duration:** July 2021 – October 2025 &nbsp;·&nbsp; **Role:** Team member
+
+Development of an artificial-intelligence framework for climate science and services, improving the understanding and predictability of extreme events and quantifying their impacts on climate-related sectors under historical and projected climate conditions, from the European to the local scale.
+
+---
 
 ### HEATforecast: Dynamical Constraints for the Predictability of Heat Waves
 **Funder:** European Research Council (ERC), EXCELLENT SCIENCE &nbsp;·&nbsp; **Ref:** 847456  
