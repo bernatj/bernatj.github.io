@@ -10,7 +10,7 @@ nav_order: 6
 
 ### ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events
 **Funder:** Comunidad de Madrid – "César Nombela" Talent Attraction Programme &nbsp;·&nbsp; **Ref:** 2025-T1/ECO-36122  
-**Duration:** July 2025 – June 2030 &nbsp;·&nbsp; **Role:** Principal Investigator
+**Duration:** July 2026 – June 2031 &nbsp;·&nbsp; **Role:** Principal Investigator
 
 Extreme events such as heatwaves and heavy precipitation pose growing risks to society. ADAPT-X develops the first operational climate service capable of attributing extreme events to anthropogenic climate change *before* they occur. Using AI-based weather prediction models, we combine forecasts under current and counterfactual (pre-industrial) climate conditions to quantify the human fingerprint on extreme events in near-real time — delivering anticipated attribution as an early warning tool for stakeholders and decision-makers.
 
