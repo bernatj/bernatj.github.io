@@ -4,7 +4,7 @@ cv:
   email: bernatji@ucm.es
   location: Madrid, Spain
   image: ""
-  summary: Atmospheric scientist specializing in climate variability, heatwaves, teleconnections, and sub-seasonal-to-seasonal predictability. Currently a "César Nombela" Talent Attraction Researcher and Principal Investigator of the ADAPT-X project at IGEO (CSIC-UCM).
+  summary: Atmospheric scientist specializing in climate variability, heatwaves, teleconnections, and sub-seasonal-to-seasonal predictability. Currently a "César Nombela" Research Fellow and Principal Investigator of the ADAPT-X project at IGEO (CSIC-UCM).
 
   social_networks:
     - network: GitHub
@@ -19,7 +19,7 @@ cv:
   sections:
     Experience:
       - company: Instituto de Geociencias (IGEO, CSIC-UCM)
-        position: "\"César Nombela\" Talent Attraction Researcher"
+        position: "\"César Nombela\" Research Fellow"
         location: Madrid, Spain
         start_date: 2026
         end_date: present

@@ -6,8 +6,7 @@ nav: true
 nav_order: 8
 ---
 
-# **Fully funded PhD position in AI-based prediction and climate-change attribution of extreme events**
-
+## Fully funded PhD position in AI-based prediction and climate-change attribution of extreme events
 - **Application deadline:** 31 December 2026 (applications are accepted after this date until the position is filled)
 - **Start date:** Spring 2027 or as soon as possible thereafter
 - **Contract:** 4-year full-time predoctoral contract, approximately €1,655 net per month, with full Spanish Social Security coverage

@@ -13,7 +13,7 @@ The videos below show the evolution of two major extratropical cyclones simulate
 
 ---
 
-### Storm Ciarán — November 2023
+## Storm Ciarán — November 2023
 
 One of the most intense extratropical cyclones to strike western Europe in decades, causing record wind gusts and widespread damage across France, Italy, and Switzerland.
 
@@ -21,7 +21,7 @@ One of the most intense extratropical cyclones to strike western Europe in decad
 
 ---
 
-### Cyclone Claudia — November 2025
+## Cyclone Claudia — November 2025
 
 A powerful extratropical cyclone that struck the Iberian Peninsula and northwest Africa in November 2025, characterized by an intense **atmospheric river** that channelled vast amounts of moisture into the region, producing exceptional precipitation totals and strong winds.
 
@@ -29,7 +29,7 @@ A powerful extratropical cyclone that struck the Iberian Peninsula and northwest
 
 ---
 
-### Attribution of Precipitation Extremes
+## Attribution of Precipitation Extremes
 
 The figure below (Fig. 10 from [Jiménez-Esteve et al. 2026](https://doi.org/10.1088/2752-5295/ae714b)) compares area-averaged precipitation forecasts from the AIFS model under **factual** (red, current climate) and **counterfactual** (blue, pre-industrial climate) conditions for both storms.
 

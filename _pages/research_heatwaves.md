@@ -11,7 +11,7 @@ In [Jiménez-Esteve et al. (2025)](https://doi.org/10.1029/2025EF006453) we show
 
 ---
 
-### Pacific Northwest Heatwave — June 2021
+## Pacific Northwest Heatwave — June 2021
 
 In late June 2021 an extraordinary heatwave struck the Pacific Northwest of the United States and western Canada, shattering temperature records by wide margins — 49.6 °C in Lytton (British Columbia), a Canadian national record, and 46.7 °C in Portland (Oregon) — and was linked to hundreds of heat-related deaths. The event was produced by an exceptionally strong, quasi-stationary ridge (an "omega block") over the region, with the jet stream deflected far to the north.
 
@@ -25,7 +25,7 @@ Running FourCastNet-v2, Pangu-Weather and NeuralGCM from factual and counterfact
 
 ---
 
-### Iberian Heatwave — August 2018
+## Iberian Heatwave — August 2018
 
 In early August 2018 the Iberian Peninsula experienced one of its most intense heatwaves on record, with maximum temperatures above 45 °C in parts of Portugal and southwestern Spain. The event was driven by the advection of very hot air from North Africa under a persistent subtropical ridge over the Iberian Peninsula.
 
