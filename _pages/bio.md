@@ -18,7 +18,7 @@ nav_order: 3
 
 ## Current Position
 
-**July 2026 – present** &nbsp; "César Nombela" Postdoctoral Fellow · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
+**July 2026 – present** &nbsp; "César Nombela" Talent Attraction Researcher and Principal Investigator of ADAPT-X · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
 
 ---
 
