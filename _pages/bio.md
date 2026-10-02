@@ -1,12 +1,12 @@
 ---
 layout: page
-permalink: /bio/
-title: bio
+permalink: /CV/
+title: Curriculum vitae
 nav: true
 nav_order: 3
 ---
 
-## Education
+# Education
 
 **Ph.D. in Atmospheric and Climate Sciences** — ETH Zürich, Switzerland (2019)
 
@@ -16,13 +16,13 @@ nav_order: 3
 
 ---
 
-## Current Position
+# Current Position
 
-**July 2026 – present** &nbsp; "César Nombela" Talent Attraction Researcher and Principal Investigator of ADAPT-X · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
+**July 2026 – present** &nbsp; "César Nombela" Research Fellow· Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
 
 ---
 
-## Former Affiliations
+# Former Affiliations
 
 **2024 – 2026** &nbsp; Postdoctoral Researcher · Instituto de Geociencias (IGEO, CSIC-UCM), Madrid, Spain
 
@@ -40,7 +40,7 @@ nav_order: 3
 
 ---
 
-## Supervision
+# Supervision
 
 ### PhD Students
 - **Regina Ortiz Martin** (ongoing, expected 2028) — *Avances en la caracterización de olas de calor* · IGEO (CSIC-UCM). Co-supervised with D. Barriopedro, R. García-Herrera, S. Collazo.
