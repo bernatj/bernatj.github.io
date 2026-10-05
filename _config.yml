@@ -282,6 +282,10 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      path: "google872494144c1b3a61.html" # Google Search Console verification file
+    values:
+      sitemap: false
 
 sass:
   style: compressed

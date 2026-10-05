@@ -4,6 +4,7 @@ title: Research
 nav: true
 nav_order: 4
 dropdown: true
+sitemap: false # dropdown-only menu entry, no page of its own
 children:
   - title: Extratropical Cyclones
     permalink: /research/cyclones/
