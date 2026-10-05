@@ -97,18 +97,11 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="view-factual" class="fc-btn" style="display:none;" onclick="selectView('factual')" title="Mean factual 6 h precipitation over the same forecasts">Factual</button>
 </div>
 
-<!-- Counterfactual selector -->
-<div class="fc-row">
-  <span class="fc-label">Counterfactual:</span>
-  <span style="font-size:12px;color:#888;margin-right:2px;">Present Day (PD) &minus; Pre-Industrial (PI):</span>
-  <button id="cf-default" class="fc-btn" onclick="selectCF('default')" title="PD (1980-2014) minus PI (1850-1900), CMIP6 10-model mean: 0.86 K global mean. Produced until 30 Sep 2026; newer dates only have the SSP5-8.5 2010-2040 counterfactual.">PD 1980&ndash;2014 (+0.9&nbsp;K, until 30&nbsp;Sep&nbsp;2026)</button>
-  <button id="cf-ssp585-2010-2040" class="fc-btn active" onclick="selectCF('ssp585-2010-2040')" title="PD (2010-2040, SSP5-8.5) minus PI (1850-1900), CMIP6 30-model mean: 1.53 K global mean — a larger, more recent warming signal than the default">PD 2010&ndash;2040, SSP5-8.5 (+1.5&nbsp;K)</button>
-</div>
+<!-- Counterfactual (single option since the +0.9 K PD 1980-2014 counterfactual was removed on 2026-10-05) -->
 <p style="font-size:12.5px;color:#888;margin:2px 0 0;">
-  Both counterfactuals are defined the same way &mdash; a CMIP6 multi-model-mean warming delta,
-  <strong>Present Day minus Pre-Industrial (1850&ndash;1900)</strong>, subtracted from ERA5 to build the
-  pseudo-global-warming initial condition. They differ only in which period stands in for "Present Day"
-  and which CMIP6 models feed the ensemble mean &mdash; see the table below.
+  <strong>Counterfactual:</strong> Present Day (2010&ndash;2040, SSP5-8.5) minus Pre-Industrial (1850&ndash;1900),
+  a CMIP6 30-model-mean warming delta (+1.5&nbsp;K global mean) subtracted from ERA5 to build the
+  pseudo-global-warming initial condition &mdash; see the table below.
 </p>
 <h3 id="fc-title" style="margin-top:14px;">2 m Temperature &mdash; Attribution Signal</h3>
 <div class="fc-pair">
@@ -117,8 +110,7 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
          onload="this.style.display=''; document.getElementById('fc-missing').style.display='none';"
          onerror="this.style.display='none'; document.getElementById('fc-missing').style.display='block';">
     <div id="fc-missing" style="display:none; padding:40px 16px; text-align:center; color:#777; background:#f4f6f8; border-radius:8px;">
-      No map for this combination and date. The PD 1980&ndash;2014 (+0.9&nbsp;K) counterfactual was produced until
-      30 Sep 2026 and AIFS from 20 Sep 2026; choose another counterfactual or date.
+      No map for this combination and date. AIFS maps start on 20 Sep 2026; choose another model or date.
     </div>
   </div>
 </div>
@@ -145,7 +137,7 @@ var currentModel  = 'pangu';
 var currentVar    = 't2m';
 var currentRegion = 'global';
 var currentView   = 'acc_signal';
-var currentCF     = 'ssp585-2010-2040';   // the only counterfactual produced since 2026-10-01
+var currentCF     = 'ssp585-2010-2040';   // the only counterfactual shown (file-name tag)
 var currentIdx    = fcDates.length - 1;
 var playTimer     = null;
 
@@ -165,7 +157,6 @@ var VIEW_TITLES = {
   factual: 'Factual'
 };
 var CF_TITLES = {
-  'default':           'PD 1980&ndash;2014 &minus; PI, +0.9 K global mean (until 30 Sep 2026)',
   'ssp585-2010-2040':  'PD 2010&ndash;2040 (SSP5-8.5) &minus; PI, +1.5 K global mean'
 };
 
@@ -316,9 +307,7 @@ preloadAll();
 <p class="text-muted small mt-4">
 <em>Last updated: 2026-09-28 00:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from ERA5
-(pseudo-global-warming approach). Both counterfactuals below are defined the same way &mdash;
-<strong>Present Day (PD) minus Pre-Industrial (PI, 1850&ndash;1900)</strong> &mdash; and differ only in
-which period defines "Present Day" and which CMIP6 models go into the ensemble mean.
+(pseudo-global-warming approach), defined as <strong>Present Day (PD) minus Pre-Industrial (PI, 1850&ndash;1900)</strong>.
 </p>
 
 <table style="width:100%; max-width:900px; border-collapse:collapse; font-size:13px; margin:8px 0 20px;">
@@ -331,20 +320,8 @@ which period defines "Present Day" and which CMIP6 models go into the ensemble m
     </tr>
   </thead>
   <tbody>
-    <tr style="border-bottom:1px solid #e5e5e5; vertical-align:top;">
-      <td style="padding:8px 10px 8px 0;"><strong>PD 1980&ndash;2014</strong><br><span style="color:#888;">produced until 30 Sep 2026</span></td>
-      <td style="padding:8px 10px;">PD (1980&ndash;2014) &minus; PI (1850&ndash;1900)</td>
-      <td style="padding:8px 10px;">+0.86&nbsp;K</td>
-      <td style="padding:8px 0;">
-        <details>
-          <summary style="cursor:pointer;color:#555;">10 models</summary>
-          <span style="color:#666;">AWI-CM-1-1-MR, BCC-CSM2-MR, CAMS-CSM1-0, CanESM5-1, CMCC-CM2-HR4,
-          CMCC-CM2-SR5, CMCC-ESM2, EC-Earth3-CC, EC-Earth3-Veg, EC-Earth3-Veg-LR</span>
-        </details>
-      </td>
-    </tr>
     <tr style="vertical-align:top;">
-      <td style="padding:8px 10px 8px 0;"><strong>SSP5-8.5, 2010&ndash;2040</strong><br><span style="color:#888;">the only counterfactual since 1 Oct 2026</span></td>
+      <td style="padding:8px 10px 8px 0;"><strong>SSP5-8.5, 2010&ndash;2040</strong></td>
       <td style="padding:8px 10px;">PD (2010&ndash;2040, SSP5-8.5) &minus; PI (1850&ndash;1900)</td>
       <td style="padding:8px 10px;">+1.53&nbsp;K</td>
       <td style="padding:8px 0;">
