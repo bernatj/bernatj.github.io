@@ -79,6 +79,7 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <button id="var-z500" class="fc-var-btn"        onclick="selectVar('z500')">Z500</button>
   <button id="var-msl"  class="fc-var-btn"        onclick="selectVar('msl')">MSLP</button>
   <button id="var-tp"   class="fc-var-btn"        onclick="selectVar('tp')" title="6-hour accumulated precipitation. AIFS only: Pangu-Weather and FourCastNet v2 do not forecast precipitation.">Precip (6&nbsp;h)</button>
+  <button id="var-tp24" class="fc-var-btn"        onclick="selectVar('tp24')" title="24-hour accumulated precipitation (the 24 h ending at each date). AIFS only: Pangu-Weather and FourCastNet v2 do not forecast precipitation.">Precip (24&nbsp;h)</button>
 </div>
 
 <!-- Region selector -->
@@ -93,8 +94,8 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
   <span class="fc-label">View:</span>
   <button id="view-acc_signal" class="fc-btn active" onclick="selectView('acc_signal')">Attribution Signal</button>
   <button id="view-init_delta" class="fc-btn"        onclick="selectView('init_delta')" title="The Factual − PGW perturbation applied to the initial condition">Initial-Condition Perturbation</button>
-  <button id="view-acc_signal_rel" class="fc-btn" style="display:none;" onclick="selectView('acc_signal_rel')" title="Factual − PGW as a percentage of the counterfactual, masked where the counterfactual has less than 1 mm per 6 h">Relative Change (%)</button>
-  <button id="view-factual" class="fc-btn" style="display:none;" onclick="selectView('factual')" title="Mean factual 6 h precipitation over the same forecasts">Factual</button>
+  <button id="view-acc_signal_rel" class="fc-btn" style="display:none;" onclick="selectView('acc_signal_rel')" title="Factual − PGW as a percentage of the counterfactual, masked where the counterfactual has less than 1 mm in the accumulation period">Relative Change (%)</button>
+  <button id="view-factual" class="fc-btn" style="display:none;" onclick="selectView('factual')" title="Mean factual precipitation over the same forecasts">Factual</button>
 </div>
 
 <!-- Counterfactual (single option since the +0.9 K PD 1980-2014 counterfactual was removed on 2026-10-05) -->
@@ -148,7 +149,8 @@ var VAR_TITLES = {
   rh850: '850 hPa Relative Humidity',
   z500:  '500 hPa Geopotential Height',
   msl:   'Mean Sea Level Pressure',
-  tp:    '6 h Precipitation (AIFS)'
+  tp:    '6 h Precipitation (AIFS)',
+  tp24:  '24 h Precipitation (AIFS)'
 };
 var VIEW_TITLES = {
   acc_signal: 'Attribution Signal',
@@ -192,8 +194,8 @@ function updateImages() {
   if (currentView === 'init_delta') {
     document.getElementById('fc-date-label').textContent = 'Init ' + initOf(key) + star;
     document.getElementById('fc-init-label').textContent = 'perturbation applied at lead 0 h (Factual − PGW)';
-  } else if (currentVar === 'tp') {
-    document.getElementById('fc-date-label').textContent = '6 h accumulation ending ' + fmt(key) + star;
+  } else if (isPrecip(currentVar)) {
+    document.getElementById('fc-date-label').textContent = (currentVar === 'tp24' ? '24' : '6') + ' h accumulation ending ' + fmt(key) + star;
     document.getElementById('fc-init-label').textContent = 'main init ' + initOf(key) + ' (lead 48 h) · step through dates to follow its evolution';
   } else {
     document.getElementById('fc-date-label').textContent = 'Valid ' + fmt(key) + star;
@@ -212,8 +214,9 @@ function preloadAll() {
 
 // Precipitation exists only for AIFS and has no initial-condition view; the Factual and Relative Change views
 // exist only for precipitation. applyAvailability() keeps the model/variable/view combination valid.
+function isPrecip(v) { return v === 'tp' || v === 'tp24'; }   // 6 h and 24 h accumulations
 function applyAvailability() {
-  var isTp = currentVar === 'tp';
+  var isTp = isPrecip(currentVar);
   if (isTp) currentModel = 'aifs';
   if (isTp && currentView === 'init_delta') currentView = 'acc_signal';
   if (!isTp && (currentView === 'factual' || currentView === 'acc_signal_rel')) currentView = 'acc_signal';
@@ -231,7 +234,7 @@ function applyAvailability() {
 
 function selectModel(m) {
   currentModel = m;
-  if (currentVar === 'tp' && m !== 'aifs') currentVar = 't2m';   // precipitation is AIFS-only
+  if (isPrecip(currentVar) && m !== 'aifs') currentVar = 't2m';   // precipitation is AIFS-only
   applyAvailability(); updateImages(); preloadAll();
 }
 
@@ -343,5 +346,5 @@ Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from E
   as inputs. Its counterfactual therefore shifts them consistently with the 2&nbsp;m temperature (SST delta over ocean,
   2&nbsp;m-temperature delta over land, 2&nbsp;m relative humidity kept); otherwise AIFS pulls the 2&nbsp;m temperature
   back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
-  FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only (6&nbsp;h accumulation ending at each date).
+  FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only: the 6&nbsp;h or 24&nbsp;h accumulation ending at each date (24&nbsp;h windows overlap from one date to the next).
 </p>
