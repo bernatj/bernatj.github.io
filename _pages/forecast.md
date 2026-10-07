@@ -344,7 +344,7 @@ Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from E
 <p class="text-muted small">
   <strong>AIFS</strong> (ECMWF, aifs-single-1.0) also takes skin temperature, soil temperature and 2&nbsp;m dewpoint
   as inputs. Its counterfactual therefore shifts them consistently with the 2&nbsp;m temperature (SST delta over ocean,
-  2&nbsp;m-temperature delta over land, 2&nbsp;m relative humidity kept); otherwise AIFS pulls the 2&nbsp;m temperature
+  2&nbsp;m-temperature delta over land and sea ice, 2&nbsp;m relative humidity kept; sea ice included for maps valid from 3&nbsp;Oct&nbsp;2026 06&nbsp;UTC); otherwise AIFS pulls the 2&nbsp;m temperature
   back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
   FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only: the 6&nbsp;h or 24&nbsp;h accumulation ending at each date (24&nbsp;h windows overlap from one date to the next).
 </p>
