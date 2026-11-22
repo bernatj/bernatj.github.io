@@ -131,7 +131,7 @@ See <a href="https://doi.org/10.1029/2025EF006453" target="_blank">Jiménez-Este
 
 <script>
 // DATES_START (rewritten daily by update_website.py; oldest first, keys are verification times YYYYMMDDHH)
-var fcDates = ['2026111206', '2026111212', '2026111218', '2026111300', '2026111306', '2026111312', '2026111318', '2026111400', '2026111406', '2026111412', '2026111418', '2026111500', '2026111506', '2026111518', '2026111600', '2026111606', '2026111612', '2026111618', '2026111700', '2026111706'];
+var fcDates = ['2026111212', '2026111218', '2026111300', '2026111306', '2026111312', '2026111318', '2026111400', '2026111406', '2026111412', '2026111418', '2026111500', '2026111506', '2026111518', '2026111600', '2026111606', '2026111612', '2026111618', '2026111700', '2026111706', '2026111712'];
 // DATES_END
 
 var currentModel  = 'pangu';
@@ -308,7 +308,7 @@ preloadAll();
 ---
 
 <p class="text-muted small mt-4">
-<em>Last updated: 2026-11-15 06:00 UTC</em> &nbsp;&middot;&nbsp;
+<em>Last updated: 2026-11-15 12:00 UTC</em> &nbsp;&middot;&nbsp;
 Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from ERA5
 (pseudo-global-warming approach), defined as <strong>Present Day (PD) minus Pre-Industrial (PI, 1850&ndash;1900)</strong>.
 </p>
