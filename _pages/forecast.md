@@ -348,3 +348,13 @@ Counterfactual conditions subtract a CMIP6 multi-model-mean warming delta from E
   back to the unperturbed surface within its first 6&nbsp;h. The <strong>multi-model mean</strong> averages Pangu-Weather,
   FourCastNet v2 and AIFS. <strong>Precipitation</strong> is AIFS only: the 6&nbsp;h or 24&nbsp;h accumulation ending at each date (24&nbsp;h windows overlap from one date to the next).
 </p>
+
+<style>
+.adaptx-logo { margin: 1.5rem 0 0.5rem; }
+.adaptx-logo .adaptx-dark { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-light { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-dark { display: inline; }
+</style>
+<hr>
+<p class="text-muted small" style="margin-bottom:0.25rem;">This anticipated-attribution service is developed within the ADAPT-X project.</p>
+<div class="adaptx-logo"><a href="{{ '/projects/' | relative_url }}"><img class="adaptx-light" src="{{ '/assets/img/adaptx/adaptx_logo_light.png' | relative_url }}" style="width:320px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"><img class="adaptx-dark" src="{{ '/assets/img/adaptx/adaptx_logo_dark.png' | relative_url }}" style="width:320px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"></a></div>

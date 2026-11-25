@@ -9,6 +9,15 @@ nav_order: 6
 ## Current Projects
 
 ### ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events
+
+<style>
+.adaptx-logo { margin: 0.5rem 0 1.25rem; }
+.adaptx-logo .adaptx-dark { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-light { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-dark { display: inline; }
+</style>
+<div class="adaptx-logo"><img class="adaptx-light" src="{{ '/assets/img/adaptx/adaptx_logo_light.png' | relative_url }}" style="width:440px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"><img class="adaptx-dark" src="{{ '/assets/img/adaptx/adaptx_logo_dark.png' | relative_url }}" style="width:440px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"></div>
+
 **Funder:** Comunidad de Madrid – "César Nombela" Talent Attraction Programme &nbsp;·&nbsp; **Ref:** 2025-T1/ECO-36122  
 **Duration:** July 2026 – June 2031 &nbsp;·&nbsp; **Role:** Principal Investigator
 

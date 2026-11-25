@@ -6,6 +6,14 @@ nav: true
 nav_order: 8
 ---
 
+<style>
+.adaptx-logo { margin: 0.5rem 0 1.25rem; }
+.adaptx-logo .adaptx-dark { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-light { display: none; }
+html[data-theme="dark"] .adaptx-logo .adaptx-dark { display: inline; }
+</style>
+<div class="adaptx-logo"><a href="{{ '/projects/' | relative_url }}"><img class="adaptx-light" src="{{ '/assets/img/adaptx/adaptx_logo_light.png' | relative_url }}" style="width:440px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"><img class="adaptx-dark" src="{{ '/assets/img/adaptx/adaptx_logo_dark.png' | relative_url }}" style="width:440px; max-width:100%; height:auto;" alt="ADAPT-X: AI-Driven AnticiPated aTtribution of eXtreme events"></a></div>
+
 ## Fully funded PhD position in AI-based prediction and climate-change attribution of extreme events
 - **Application deadline:** 31 December 2026 (applications are accepted after this date until the position is filled)
 - **Start date:** Spring 2027 or as soon as possible thereafter
